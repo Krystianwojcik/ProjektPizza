@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{city}/{name}/', 'PizzeriaController@index')->name('pizzeria');
 
-Auth::routes();
+Route::post('/order/', 'OrderController@index')->name('order');
+Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

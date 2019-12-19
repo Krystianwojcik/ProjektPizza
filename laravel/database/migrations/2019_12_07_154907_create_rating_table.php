@@ -14,11 +14,11 @@ class CreateRatingTable extends Migration
     public function up()
     {
         Schema::create('rating', function (Blueprint $table) {
-            $table->bigIncrements('rating_id');
+            $table->bigIncrements('id');
             $table->biginteger('order_id')->unsigned();
-            $table->foreign('order_id')->references('order_id')->on('order');
-            $table->integer('rating_value');
-            $table->text('rating_description');
+            $table->foreign('order_id')->references('id')->on('order');
+            $table->integer('value');
+            $table->text('description');
         });
     }
 

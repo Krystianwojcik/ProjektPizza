@@ -15,9 +15,9 @@ class CreatePizzeriaUserTable extends Migration
     {
         Schema::create('pizzeria_user', function (Blueprint $table) {
             $table->bigInteger('pizzeria_id')->unsigned();
-            $table->foreign('pizzeria_id')->references('pizzeria_id')->on('pizzeria');
+            $table->foreign('pizzeria_id')->references('id')->on('pizzeria');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

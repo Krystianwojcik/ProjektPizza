@@ -15,9 +15,9 @@ class CreatePizzeriaPizzaComponentsTable extends Migration
     {
         Schema::create('pizzeria_pizza_components', function (Blueprint $table) {
             $table->bigInteger('pizzeria_pizza_id')->unsigned();
-            $table->foreign('pizzeria_pizza_id')->references('pizzeria_pizza_id')->on('pizzeria_pizza');
+            $table->foreign('pizzeria_pizza_id')->references('id')->on('pizzeria_pizza');
             $table->bigInteger('components_id')->unsigned();
-            $table->foreign('components_id')->references('components_id')->on('components');
+            $table->foreign('components_id')->references('id')->on('components');
         });
     }
 

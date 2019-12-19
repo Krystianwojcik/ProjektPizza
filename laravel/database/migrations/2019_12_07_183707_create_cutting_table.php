@@ -14,8 +14,8 @@ class CreateCuttingTable extends Migration
     public function up()
     {
         Schema::create('cutting', function (Blueprint $table) {
-            $table->Increments('cutting_id');
-            $table->string('cutting_name');
+            $table->Increments('id');
+            $table->string('name');
         });
     }
 

@@ -14,12 +14,12 @@ class CreateUserAddressTable extends Migration
     public function up()
     {
         Schema::create('user_address', function (Blueprint $table) {
-            $table->bigIncrements('address_id');
+            $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->string('address_street');
-            $table->string('address_city');
-            $table->string('address_zipcode');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('street');
+            $table->string('city');
+            $table->string('zipcode');
         });
     }
 

@@ -14,13 +14,13 @@ class CreateOrderPizzaTable extends Migration
     public function up()
     {
         Schema::create('order_pizza', function (Blueprint $table) {
-            $table->bigIncrements('order_pizza_id');
+            $table->bigIncrements('id');
             $table->biginteger('order_id')->unsigned();
-            $table->foreign('order_id')->references('order_id')->on('order');
+            $table->foreign('order_id')->references('id')->on('order');
             $table->bigInteger('pizzeria_pizza_id')->unsigned();
-            $table->foreign('pizzeria_pizza_id')->references('pizzeria_pizza_id')->on('pizzeria_pizza');
+            $table->foreign('pizzeria_pizza_id')->references('id')->on('pizzeria_pizza');
             $table->integer('cutting_id')->unsigned();
-            $table->foreign('cutting_id')->references('cutting_id')->on('cutting');
+            $table->foreign('cutting_id')->references('id')->on('cutting');
         });
     }
 

@@ -14,11 +14,11 @@ class CreatePizzeriaPizzaTable extends Migration
     public function up()
     {
         Schema::create('pizzeria_pizza', function (Blueprint $table) {
-            $table->bigIncrements('pizzeria_pizza_id');
+            $table->bigIncrements('id');
             $table->bigInteger('pizzeria_id')->unsigned();
-            $table->foreign('pizzeria_id')->references('pizzeria_id')->on('pizzeria');
-            $table->string('pizzeria_pizza_name');
-            $table->integer('pizzeria_pizza_price');
+            $table->foreign('pizzeria_id')->references('id')->on('pizzeria');
+            $table->string('name');
+            $table->integer('price');
         });
     }
 

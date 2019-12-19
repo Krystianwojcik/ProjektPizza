@@ -14,12 +14,15 @@ class CreatePizzeriaTable extends Migration
     public function up()
     {
         Schema::create('pizzeria', function (Blueprint $table) {
-            $table->bigIncrements('pizzeria_id');
-            $table->string('pizzeria_name');
-            $table->string('pizzeria_street');
-            $table->string('pizzeria_city');
-            $table->string('pizzeria_zipcode');
-            $table->string('pizzeria_phone');
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('street');
+            $table->integer('number');
+            $table->string('city');
+            $table->string('zipcode');
+            $table->string('phone');
+            $table->string('city_slug');
+            $table->string('name_slug');
         });
     }
 

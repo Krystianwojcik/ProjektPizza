@@ -14,19 +14,19 @@ class CreateOrderTable extends Migration
     public function up()
     {
         Schema::create('order', function (Blueprint $table) {
-            $table->bigIncrements('order_id');
+            $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->Integer('status_id')->unsigned();
-            $table->foreign('status_id')->references('status_id')->on('order_status');
+            $table->foreign('status_id')->references('id')->on('order_status');
             $table->bigInteger('pizzeria_id')->unsigned();
-            $table->foreign('pizzeria_id')->references('pizzeria_id')->on('pizzeria');
-            $table->dateTime('order_time');
-            $table->string('order_name');
-            $table->string('order_surname');
-            $table->string('order_street');
-            $table->string('order_city');
-            $table->string('order_zipcode');
+            $table->foreign('pizzeria_id')->references('id')->on('pizzeria');
+            $table->dateTime('time');
+            $table->string('name');
+            $table->string('surname');
+            $table->string('street');
+            $table->string('city');
+            $table->string('zipcode');
             
         });
     }
