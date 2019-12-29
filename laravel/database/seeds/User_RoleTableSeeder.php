@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Pizzeria_UserTableSeeder extends Seeder
+class User_RoleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +12,11 @@ class Pizzeria_UserTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('pl_PL');
-        for($i=1; $i<=5; $i++)
+        for($i=1; $i<=10; $i++)
         {
-            DB::table('pizzeria_user')->insert([
-                'pizzeria_id'=>$faker->numberBetween(1,5),
+            DB::table('user_role')->insert([
                 'user_id'=>$faker->numberBetween(1,10),
+                'role_id'=>$faker->numberBetween(1,3),
             ]);
         }
     }
