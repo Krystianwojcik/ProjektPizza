@@ -11,4 +11,5 @@
         <td><a href="{{route('pizzeria', ['city' => $object->city_slug, 'name' => $object->name_slug])}}">Link</a></td>
     </tr>
     @endforeach
+        <td><a href="{{route('panelkucharza')}}">Panel kucharza</a></td>
 </table>

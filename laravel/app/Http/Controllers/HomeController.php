@@ -22,10 +22,20 @@ class HomeController extends Controller
     {
         $this->fR = $frontendRepository;
     }
-    
+
     public function index()
     {
         $objects = $this->fR->getObjectsForMainPage();
         return view('PizzeriaList',['objects'=>$objects]);
+    }
+    public function listOfUsers()
+    {
+        $objects = $this->fR->getAllUsers();
+        return view('PanelKucharza',['objects'=>$objects]);
+    }
+    public function panelKucharza()
+    {
+        $objects = $this->fR->getAllOrders();
+        return view('PanelKucharza',['orderss'=>$objects]);
     }
 }

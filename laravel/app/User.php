@@ -8,7 +8,11 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected $table = 'users';
     use Notifiable;
+
+    public static $roles = [];
+
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +40,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+    public function getRole()
+    {
+        return $this->role();
+    }
+
+    public function hasRole(array $roles)
+    {
+        foreach($roles as $role)
+        {
+            if(isset(self::$roles[$role]))
+            {
+                if(self::$roles[$role]) return true;
+            }
+            else
+            {
+                self::$roles[$role] = $this->roles()->where('name', $role)->exists();
+
+                if(self::$roles[$role]) return true;
+            }
+        }
+        return false;
+    }
+    public function orders()
+    {
+        return $this->hasMany('App\Order', 'user_id');
+    }
+
 }
