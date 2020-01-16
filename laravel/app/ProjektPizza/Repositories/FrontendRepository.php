@@ -31,7 +31,11 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     }
     public function getAllOrders()
     {
-        return Order::where('status_id', '=', '1')->get();
+        return Order::where('status_id', '<=', '2')->get();
+    }
+    public function getOrder($id)
+    {
+        return Order::find($id);
     }
 
 

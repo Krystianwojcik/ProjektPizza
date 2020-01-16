@@ -9,6 +9,7 @@ interface FrontendRepositoryInterface   {
     public function getAllUsers();
     public function getAllRoles();
     public function getAllOrders();
+    public function getOrder($id);
 }
 
 
