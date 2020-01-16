@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(User_AddressTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $this->call(Pizzeria_UserTableSeeder::class);
+        $this->call(User_RoleTableSeeder::class);
+        $this->call(Pizzeria_ComponentsTableSeeder::class);
+        $this->call(Order_PizzaTableSeeder::class);
+        $this->call(Pizza_ComponentsTableSeeder::class);
 
     }
 }

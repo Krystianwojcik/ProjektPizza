@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProjektPizza\Interfaces\FrontendRepositoryInterface;
-
+use App\Order;
 class HomeController extends Controller
 {
 
@@ -22,10 +22,27 @@ class HomeController extends Controller
     {
         $this->fR = $frontendRepository;
     }
-    
+
     public function index()
     {
         $objects = $this->fR->getObjectsForMainPage();
         return view('PizzeriaList',['objects'=>$objects]);
+    }
+    public function listOfUsers()
+    {
+        $objects = $this->fR->getAllUsers();
+        return view('PanelKucharza',['objects'=>$objects]);
+    }
+    public function panelKucharza()
+    {
+        $objects = $this->fR->getAllOrders();
+        return view('PanelKucharza',['orderss'=>$objects]);
+    }
+    public function editos($id)
+    {
+        $order= Order::find($id);
+        dd($id->all());
+        return view('editos', compact('order'));
+
     }
 }
