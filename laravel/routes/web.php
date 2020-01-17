@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@home')->name('homes');
+Route::get('/pizzeriaList', 'HomeController@index')->name('pizzerialist');
 Route::get('/{city}/{name}/', 'PizzeriaController@index')->name('pizzeria');
 Route::get('/panelkucharza', 'HomeController@panelKucharza')->name('panelkucharza');
 Route::get('/editos/{id}/', 'HomeController@editos')->name('editos');
+Route::get('/homepage', 'HomeController@home')->name('homepage');
+Route::get('/login', 'HomeController@login')->name('login');
+Route::get('/register', 'HomeController@register')->name('register');
+Route::get('/creator', 'HomeController@creator')->name('creator');
+
+
+
 
 Route::post('/order/', 'OrderController@index')->name('order');
 Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');

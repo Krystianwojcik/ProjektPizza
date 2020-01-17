@@ -1,0 +1,94 @@
+body{ 
+	background:#DDDDDD;
+} 
+ 
+ .container{ 
+	width:406px; 
+	max-width:406px; 
+	margin:0 auto; 
+	padding:5px;
+ }  
+ 
+ img{ 
+ margin-left:40px;}
+ 
+ 
+ #login{ 
+	padding:0px 25px 25px; 
+	background:#FFFFFF; 
+	box-shadow: 
+		0px 0px 0px 5px rgba(255,255,255,0.4), 
+		0px 4px 20px rgba(0,0,0,0.75);	
+	display:table; 
+	position:static;	
+} 
+#login .header{  
+	margin-bottom:20px;
+}  
+
+#login .header h3{   
+	font-size:25px; 
+	font-weight:bold; 
+	margin-bottom:5px; 
+	text-align:center; 
+} 
+#login .header p{  
+	font-size:15px; 
+	text-align:center;
+} 
+ 
+#login .inputs{  
+	margin-top:25px; 
+ } 
+input::-webkit-input-placeholder{  
+	color:gray;
+}  
+input:-moz-placeholder{ 
+	color:gray; 
+} 
+#login .inputs input[type=login], input[type=hasło]{ 
+	background:#DDDDDD; 
+	font-size:0.8rem;  
+	border:none; 
+	padding:8px 10px;  
+	width: 330px; 
+	margin-bottom:25px; 
+	box-shadow: inset 0px 2px 3px rgba(0,0,0,0.4);
+} 
+#login .inputs input[type=login]:focus, input[type=hasło]:focus{ 
+	background:#FFF;  
+	box-shadow:0px 0px 0px 2px #000000, inset 0px 2px 3px rgba(0,0,0,0.2),0px 5px 5px rgba(0,0,0,0.7); 
+	outline: none:
+} 
+
+.button {
+    background-color: #efefef;
+    border: 1px solid #bbbbbb;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    -moz-box-shadow: 2px 2px 3px #cccccc;
+    -webkit-box-shadow: 2px 2px 3px #cccccc;
+    box-shadow: 2px 2px 3px #cccccc;
+    text-decoration: none;
+    color: #3d3d3d;
+    font-family: Calibri, Verdana, Arial, sans-serif;
+    font-size: 18px;
+    outline: none;
+    padding: 3px 10px; 
+	display:block; 
+	margin:0 auto; 
+	text-align: center;
+}
+ 
+.button:active {
+    -moz-box-shadow: 2px 2px 3px #cccccc inset;
+    -webkit-box-shadow: 2px 2px 3px #cccccc inset;
+    box-shadow: 2px 2px 3px #cccccc inset;
+}
+
+
+
+
+
+
