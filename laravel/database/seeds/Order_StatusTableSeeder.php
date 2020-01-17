@@ -15,22 +15,26 @@ class Order_StatusTableSeeder extends Seeder
 
         DB::table('order_status')->insert([
             'id'=>1,
-            'name'=>'Przyjęto do realizacji',
+            'name'=>'Nowy',
         ]);
         DB::table('order_status')->insert([
             'id'=>2,
-            'name'=>'W trakcie produkcji',
+            'name'=>'Przyjęto do realizacji',
         ]);
         DB::table('order_status')->insert([
             'id'=>3,
-            'name'=>'W drodze',
+            'name'=>'W trakcie produkcji',
         ]);
         DB::table('order_status')->insert([
             'id'=>4,
-            'name'=>'Zrealizowano',
+            'name'=>'W drodze',
         ]);
         DB::table('order_status')->insert([
             'id'=>5,
+            'name'=>'Zrealizowano',
+        ]);
+        DB::table('order_status')->insert([
+            'id'=>6,
             'name'=>'Anulowano',
         ]);
     }

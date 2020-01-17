@@ -20,3 +20,6 @@ Route::post('/order/', 'OrderController@index')->name('order');
 Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');
 
 
+/* Zmiana statusus zamowienia */
+Route::get('/change_status_order', 'HomeController@change_status_order');
+Route::post('/change_status_order', 'HomeController@change_status_order_function');

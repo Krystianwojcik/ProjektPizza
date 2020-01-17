@@ -27,6 +27,7 @@ class CreateOrderTable extends Migration
             $table->string('street');
             $table->string('city');
             $table->string('zipcode');
+            $table->timestamps();
             
         });
     }

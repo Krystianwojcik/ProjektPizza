@@ -45,4 +45,18 @@ class HomeController extends Controller
         return view('editos', compact('order'));
 
     }
+    
+    
+    public function change_status_order_function(Request $request) {
+        $order_id = $request->all()['order_id'];
+        $status_id = $request->all()['status_id']; 
+        
+        $order = Order::find($order_id);
+        $order->status_id = $status_id;
+        $order->save();
+        
+        return response()->json(['success'=>'sukcess']);
+        
+        
+    }
 }

@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+ 
 <b>Lista zamówień</b>
 <table>
     <tr>
@@ -25,7 +37,10 @@
         <td>{{$order->pizzeria->name}}</td>
         <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}</td>
         <td>{{$order->street}}</td>
-        <td><a href="{{ route('editos', [$order->id]) }}">Zmien status</a></td>
+        <td><button class="btn change-order-status" name="{{$order->id}}" value="2">Przyjęto do realizacji</button></td>
+        <td><button class="btn change-order-status" name="{{$order->id}}" value="3">W trakcie produkcji</button></td>
+        <td><button class="btn change-order-status" name="{{$order->id}}" value="4">W drodze</button></td>
+
 
 
 
@@ -35,3 +50,30 @@
     @endforeach
 
 </table>
+
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(".change-order-status").click(function(e){
+        e.preventDefault();
+        var order_id = $(this).attr('name');
+        var status_id = $(this).attr('value');
+        $.ajax({
+           type:'POST',
+           url:'/change_status_order',
+           data:{order_id: order_id, status_id: status_id},
+           success:function(data){
+                alert(data.success);
+                console.log(data.success);
+           }
+        });
+	});
+</script>
+
+   
+</body>
+</html>
