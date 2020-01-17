@@ -12,12 +12,15 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/creator-pizzy/', 'CreatorController@index')->name('creator-pizzy');
 Route::get('/{city}/{name}/', 'PizzeriaController@index')->name('pizzeria');
 Route::get('/panelkucharza', 'HomeController@panelKucharza')->name('panelkucharza');
 Route::get('/editos/{id}/', 'HomeController@editos')->name('editos');
 
 Route::post('/order/', 'OrderController@index')->name('order');
 Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');
+
 
 
 /* Zmiana statusus zamowienia */

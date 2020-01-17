@@ -12,4 +12,5 @@
     </tr>
     @endforeach
         <td><a href="{{route('panelkucharza')}}">Panel kucharza</a></td>
+        <td><a href="{{route('creator-pizzy')}}">Kreator pizzy</a></td>
 </table>

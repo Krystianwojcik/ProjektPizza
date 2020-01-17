@@ -9,12 +9,17 @@ use App\User;
 use App\Role;
 use App\Order;
 use App\Order_Status;
+use App\Components;
 
 class FrontendRepository implements FrontendRepositoryInterface  {
 
     public function getObjectsForMainPage()
     {
         return Pizzeria::all();
+    }
+    public function getAllComponents()
+    {
+        return Components::all();
     }
     public function getPizzeriaObject($city_slug, $name_slug)
     {
