@@ -1,86 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-</head>
-<body>
-
-<b>Lista zamówień</b>
-<table>
-    <tr>
-        <td><b>ID Zamówienia</b></td>
-        <td><b>Staus</b></td>
-        <td><b>Imię</b></td>
-            <td><b>Nazwisko</b></td>
-            <td><b>miasto</b></td>
-            <td><b>Nazwa Pizzerii</b></td>
-            <td><b>Z adresu</b></td>
-            <td><b>Na adres</b></td>
-
-
-
-
-
-    </tr>
-    @foreach($orderss as $order)
-    <tr>
-        <td>{{$order->id}}</td>
-        <td>{{$order->status->name}}</td>
-        <td>{{$order->user->name}}</td>
-        <td>{{$order->user->surname}}</td>
-        <td>{{$order->city}}</td>
-        <td>{{$order->pizzeria->name}}</td>
-        <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}</td>
-        <td>{{$order->street}}</td>
-        @if($order->status->id == '1')
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Przyjmij do realizacji</button></td>
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+2}}">Na produkcje</button></td>
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="7">Brakuje składników/anuluj</button></td>
-            @elseif($order->status->id == '2')
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Na produkcje</button></td>
-        @elseif($order->status->id == '3')
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Czeka na dostawcę</button></td>
-            @endif
-
-
-
-
-
-    </tr>
-
-
+@extends('layouts.front2')
+@section('content')
+<div class="text-center">
+    <b>Lista zamówień dla dostawcy</b>
+</div>
+<div class="container">
+    @foreach($orderss->chunk(4) as $chunked_order)
+        <div class="row">
+            @foreach($chunked_order as $order)
+                <div class="zamowienie col-md-3 col-sm-6">
+                    <b>Id zamowienia: </b> {{$order->id}}<br>
+                    <b>Staus: </b>{{$order->status->name}}<br>
+                    <b>Imię: </b>{{$order->user->name}}<br>
+                    <b>Nazwisko: </b>{{$order->user->surname}}<br>
+                    <b>miasto: </b>{{$order->city}}<br>
+                    <b>Nazwa Pizzerii: </b>{{$order->pizzeria->name}}<br>
+                    <b>Z adresu: </b>{{$order->pizzeria->street}} {{$order->pizzeria->number}}<br>
+                    <b>Na adres: </b>{{$order->street}}<br>
+                    @if($order->status->id == '1')
+                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Realizuj</button>
+                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+2}}">Na produkcje</button>
+                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="7">Anuluj</button>
+                    @elseif($order->status->id == '2')
+                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Na produkcje</button>
+                    @elseif($order->status->id == '3')
+                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Czeka na dostawcę</button>
+                    @endif
+                </div>
+            @endforeach
+        </div>
     @endforeach
 
-</table>
+</div>
 
 
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(".change-order-status").click(function(e){
-        e.preventDefault();
-        var order_id = $(this).attr('name');
-        var status_id = $(this).attr('value');
-        $.ajax({
-           type:'POST',
-           url:'/change_status_order',
-           data:{order_id: order_id, status_id: status_id},
-           success:function(data){
-                alert(data.success);
-                console.log(data.success);
-           }
+
+@endsection
+
+@section('scripts')
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
-	});
-</script>
+        $(".change-order-status").click(function(e){
+            e.preventDefault();
+            var order_id = $(this).attr('name');
+            var status_id = $(this).attr('value');
+            $.ajax({
+                type:'POST',
+                url:'/change_status_order',
+                data:{order_id: order_id, status_id: status_id},
+                success:function(data){
+                    alert(data.success);
+                    console.log(data.success);
+                }
+            });
+        });
+    </script>
+    @endsection
 
-
-</body>
-</html>

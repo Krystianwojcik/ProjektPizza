@@ -1,11 +1,21 @@
-@extends('layouts.front')
-@section('head')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="./src/js/scrollreveal.min.js"></script>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pizza.pl</title>
+    <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,700|Mukta:500,700" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-@endsection
-@section('content')
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="./src/js/scrollreveal.min.js"></script>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon/">
+
+	<meta name="description" content="Zamów pizze nie wychodząc z domu"/>
+	<meta name="keywords" content= "pizza,zamówienie,jedzenie"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+</head>
 <body class="is-boxed has-animations">
 
     <div class="body-wrap boxed-container">
@@ -108,12 +118,12 @@
                 </div>
             </section>
         </main>
-
+        <footer>
+		© 2020 pizza.pl
+		</footer>
 
     </div>
-    @endsection
-    @section('scripts')
+
     <script src="dist/js/main.min.js"></script>
-    @endsection
-
-
+</body>
+</html>

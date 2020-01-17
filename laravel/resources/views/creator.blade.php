@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang"pl">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Kreator pizzy</title>
-	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap&subset=latin-ext" rel="stylesheet">
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon/">
-	<link rel="stylesheet" href="{{asset('css/stylekreatora.css')}}">
-</head>
-
+@extends('layouts.front')
+@section('head')
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/stylekreatora.css')}}">
+@endsection
+@section('content')
 <body>
 	<div id="wrapper">
 		<header>
@@ -154,4 +148,4 @@
 		 </section>
 
 	</div>
-</body>
+@endsection

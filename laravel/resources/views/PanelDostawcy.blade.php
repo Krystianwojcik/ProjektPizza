@@ -1,59 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+@extends('layouts.front2')
+@section('content')
 
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-</head>
-<body>
-
+<div class="text-center">
 <b>Lista zamówień dla dostawcy</b>
-<table>
-    <tr>
-        <td><b>ID Zamówienia</b></td>
-        <td><b>Staus</b></td>
-        <td><b>Imię</b></td>
-            <td><b>Nazwisko</b></td>
-            <td><b>miasto</b></td>
-            <td><b>Nazwa Pizzerii</b></td>
-            <td><b>Z adresu</b></td>
-            <td><b>Na adres</b></td>
+</div>
+<div class="container">
+    @foreach($orderss->chunk(4) as $chunked_order)
+        <div class="row">
+        @foreach($chunked_order as $order)
+            <div class="zamowienie col-md-3 col-sm-6">
+                <b>Id zamowienia: </b> {{$order->id}}<br>
+                <b>Staus: </b>{{$order->status->name}}<br>
+                <b>Imię: </b>{{$order->user->name}}<br>
+                <b>Nazwisko: </b>{{$order->user->surname}}<br>
+                <b>miasto: </b>{{$order->city}}<br>
+                <b>Nazwa Pizzerii: </b>{{$order->pizzeria->name}}<br>
+                <b>Z adresu: </b>{{$order->pizzeria->street}} {{$order->pizzeria->number}}<br>
+                <b>Na adres: </b>{{$order->street}}<br>
+                @if($order->status->id == '4')
+                    <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">W drodze</button><br>
+                @else
+                    <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Dostarczono</button><br>
+                @endif
+            </div>
+        @endforeach
+        </div>
+            @endforeach
 
+</div>
+@endsection
 
-
-
-
-    </tr>
-    @foreach($orderss as $order)
-    <tr>
-        <td>{{$order->id}}</td>{{-- tymczasowo--}}
-        <td>{{$order->status->name}}</td>
-        <td>{{$order->user->name}}</td>
-        <td>{{$order->user->surname}}</td>
-        <td>{{$order->city}}</td>
-        <td>{{$order->pizzeria->name}}</td>
-        <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}</td>
-        <td>{{$order->street}}</td>
-        @if($order->status->id == '4')
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">W drodze</button></td>
-        @else
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Dostarczono</button></td>
-        @endif
-
-
-
-
-    </tr>
-
-
-    @endforeach
-
-</table>
-
-
+@section('scripts')
 <script>
     $.ajaxSetup({
         headers: {
@@ -75,7 +52,7 @@
         });
 	});
 </script>
+@endsection
 
 
-</body>
-</html>
+
