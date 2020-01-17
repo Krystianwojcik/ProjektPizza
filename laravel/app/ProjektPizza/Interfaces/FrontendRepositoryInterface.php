@@ -10,6 +10,8 @@ interface FrontendRepositoryInterface   {
     public function getAllRoles();
     public function getAllOrders();
     public function getOrder($id);
+    public function getOrdersForSupplier();
+    public function getOrdersForChef();
 }
 
 

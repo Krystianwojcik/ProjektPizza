@@ -35,9 +35,15 @@ class HomeController extends Controller
     }
     public function panelKucharza()
     {
-        $objects = $this->fR->getAllOrders();
+        $objects = $this->fR->getOrdersForChef();
         return view('PanelKucharza',['orderss'=>$objects]);
     }
+    public function panelDostawcy()
+    {
+        $objects = $this->fR->getOrdersForSupplier();
+        return view('PanelDostawcy',['orderss'=>$objects]);
+    }
+
     public function editos($id)
     {
         $order= Order::find($id);

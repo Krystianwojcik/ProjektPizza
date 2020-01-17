@@ -14,7 +14,8 @@
 Route::get('/', 'HomeController@home')->name('homes');
 Route::get('/pizzeriaList', 'HomeController@index')->name('pizzerialist');
 Route::get('/{city}/{name}/', 'PizzeriaController@index')->name('pizzeria');
-Route::get('/panelkucharza', 'HomeController@panelKucharza')->name('panelkucharza');
+Route::get('/panel_Kucharza', 'HomeController@panelKucharza')->name('panelkucharza');
+Route::get('/panel_Dostawcy', 'HomeController@panelDostawcy')->name('paneldostawcy');
 Route::get('/editos/{id}/', 'HomeController@editos')->name('editos');
 Route::get('/homepage', 'HomeController@home')->name('homepage');
 Route::get('/login', 'HomeController@login')->name('login');

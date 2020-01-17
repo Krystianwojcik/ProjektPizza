@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<b>Lista zamówień</b>
+<b>Lista zamówień dla dostawcy</b>
 <table>
     <tr>
         <td><b>ID Zamówienia</b></td>
@@ -29,7 +29,7 @@
     </tr>
     @foreach($orderss as $order)
     <tr>
-        <td>{{$order->id}}</td>
+        <td>{{$order->id}}</td>{{-- tymczasowo--}}
         <td>{{$order->status->name}}</td>
         <td>{{$order->user->name}}</td>
         <td>{{$order->user->surname}}</td>
@@ -37,16 +37,11 @@
         <td>{{$order->pizzeria->name}}</td>
         <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}</td>
         <td>{{$order->street}}</td>
-        @if($order->status->id == '1')
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Przyjmij do realizacji</button></td>
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+2}}">Na produkcje</button></td>
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="7">Brakuje składników/anuluj</button></td>
-            @elseif($order->status->id == '2')
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Na produkcje</button></td>
-        @elseif($order->status->id == '3')
-            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Czeka na dostawcę</button></td>
-            @endif
-
+        @if($order->status->id == '4')
+            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">W drodze</button></td>
+        @else
+            <td><button class="btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Dostarczono</button></td>
+        @endif
 
 
 
