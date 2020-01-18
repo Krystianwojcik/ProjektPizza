@@ -59,4 +59,14 @@ class HomeController extends Controller
         
         
     }
+    
+    public function creator_get_pizzerias_function(Request $request) {
+        $return_no = $request->all()['return_no'];
+        $return_opcional = $request->all()['return_opcional'];
+        $return_yes = $request->all()['return_yes'];
+        
+        return response()->json(['success'=>'sukcess']);
+        
+        
+    }
 }

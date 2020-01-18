@@ -26,3 +26,7 @@ Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');
 /* Zmiana statusus zamowienia */
 Route::get('/change_status_order', 'HomeController@change_status_order');
 Route::post('/change_status_order', 'HomeController@change_status_order_function');
+
+/* Creator pobranie listy pizzerii */
+Route::get('/creator_get_pizzerias', 'HomeController@creator_get_pizzerias');
+Route::post('/creator_get_pizzerias', 'HomeController@creator_get_pizzerias_function');

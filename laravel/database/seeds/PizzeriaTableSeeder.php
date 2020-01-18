@@ -17,7 +17,7 @@ class PizzeriaTableSeeder extends Seeder
         /* Lecture 10 */
         for ($i = 1; $i <= 5; $i++)
         {
-            $name = $faker->unique()->word;
+            $name = "Pizzeria ".$i;
             $city = $faker->randomElement($array = array('Legnica', 'Lubin'));
             if ($city == 'Legnica') {
                 $zip_code = '59-220';
