@@ -117,8 +117,10 @@ body {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div id="pizzeria_list" class="modal-body">
-        ...
+      <div class="modal-body">
+        <table id="pizzeria_list" class="table table-sm">
+
+</table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -785,10 +787,11 @@ body {
                        url:'/creator_get_pizzerias',
                        data:{return_no: return_no, return_opcional: return_opcional, return_yes: return_yes},
                        success:function(data){
-                            /*alert(data.success);
-                            console.log(data.success);*/
+                            /*alert(data.success);*/
+                            console.log(data.success);
                            $("#pizzeria_list").html(data.success);
-                           $("#popup-pizzerias").show();
+                           /*$("#popup-pizzerias").show();*/
+                           $('#popup-pizzerias').modal('show')
 
                        }
                     });

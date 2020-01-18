@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProjektPizza\Interfaces\FrontendRepositoryInterface;
-use App\Order;
 
 class CreatorController extends Controller
 {
@@ -26,8 +25,21 @@ class CreatorController extends Controller
 
     public function index()
     {
+        $Pizzerias = $this->fR->getPizzaComponents(6, 4);
+        var_dump($Pizzerias);
         $components = $this->fR->getAllComponents();
         return view('Creator',['components'=>$components]);
 
+    }
+    
+        
+    public function creator_get_pizzerias_function(Request $request) {
+       $return_no = $request->all()['return_no'];
+ /*        $return_opcional = $request->all()['return_opcional'];*/
+   /*     $return_yes = $request->all()['return_yes'];*/
+        $Pizzerias = $this->fR->getAllPizzeriaWithPizza($return_no);
+        return response()->json(['success'=>$Pizzerias, 'return_no'=>$return_no]);
+        
+        
     }
 }

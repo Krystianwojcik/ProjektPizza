@@ -22,16 +22,20 @@ class Pizzeria_Pizza_ComponentsTableSeeder extends Seeder
 
                 DB::table('pizzeria_pizza_components')->insert([
                     'pizzeria_pizza_id' => $i,
-                    'components_id' => 1,
+                    'components_id' => 4,
                 ]);
         }
         for ($i = 6; $i <= 10; $i++) {
-            for ($j = 1; $j <= 2; $j++) {
+            /*for ($j = 1; $j <= 2; $j++) {*/
                 DB::table('pizzeria_pizza_components')->insert([
                     'pizzeria_pizza_id' => $i,
-                    'components_id' => $j,
+                    'components_id' => 4,
                 ]);
-            }
+                DB::table('pizzeria_pizza_components')->insert([
+                    'pizzeria_pizza_id' => $i,
+                    'components_id' => 2,
+                ]);
+           /* }*/
         }
     }
 }

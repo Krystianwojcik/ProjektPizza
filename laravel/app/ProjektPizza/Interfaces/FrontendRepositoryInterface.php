@@ -11,6 +11,10 @@ interface FrontendRepositoryInterface   {
     public function getAllRoles();
     public function getAllOrders();
     public function getOrder($id);
+    public function getAllPizzeriaWithPizza($return_no);
+    public function getAllPizzasWithPizzeria($id, $return_no);
+    public function getPizzaComponents($id, $return_no);
+    public function getPizzaComponents_Component($id);
 }
 
 
