@@ -24,6 +24,10 @@ Route::get('/creator', 'HomeController@creator')->name('creator');
 
 
 
+Route::get('/searchPizzeria', 'HomeController@searchPizzeria');
+
+
+Route::post('/pizzeriasearch', 'HomeController@pizzeriasearch')->name('pizzeriasearch');
 
 Route::post('/order/', 'OrderController@index')->name('order');
 Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');

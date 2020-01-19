@@ -1,9 +1,8 @@
 @extends('layouts.front2')
 @section('content')
 <div class="text-center">
-    <b>Lista zamówień dla dostawcy</b>
+    <b>Lista zamówień dla dostawcy</br><br></b>
 </div>
-<div class="container">
     @foreach($orderss->chunk(4) as $chunked_order)
         <div class="row">
             @foreach($chunked_order as $order)
@@ -30,7 +29,7 @@
         </div>
     @endforeach
 
-</div>
+
 
 
 

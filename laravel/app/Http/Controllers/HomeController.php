@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProjektPizza\Interfaces\FrontendRepositoryInterface;
+use App\ProjektPizza\Gateways\FrontendGateway;
 use App\Order;
 class HomeController extends Controller
 {
@@ -18,9 +19,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function __construct(FrontendRepositoryInterface $frontendRepository) /* Lecture 13 FrontendRepositoryInterface */
+    public function __construct(FrontendRepositoryInterface $frontendRepository, FrontendGateway $frontendGateway)
     {
         $this->fR = $frontendRepository;
+        $this->fG = $frontendGateway;
     }
 
     public function index()
@@ -65,6 +67,25 @@ class HomeController extends Controller
     public function creator()
     {
         return view('creator');
+    }
+    public function searchPizzeria(Request $request)
+    {
+        $results= $this->fG->searchPizza($request);
+
+        return response()->json($results);
+    }
+    public function pizzeriasearch(Request $request)
+    {
+        if($city = $this->fG->getSearchResults($request))
+        {
+
+            return view('PizzeriaList',['objects'=>$city]);
+        }
+        else
+        {
+            if(!$request->ajax())
+                return redirect('/')->with('nopizzeria', 'No offers were found matching the criteria');
+        }
     }
 
 

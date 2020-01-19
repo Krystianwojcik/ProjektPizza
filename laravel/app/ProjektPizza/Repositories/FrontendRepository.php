@@ -9,7 +9,6 @@ use App\User;
 use App\Role;
 use App\Order;
 use App\Order_Status;
-use DB;
 
 class FrontendRepository implements FrontendRepositoryInterface  {
 
@@ -52,6 +51,20 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     {
         return Order::find($id);
     }
+    public function getPizzeria($id)
+    {
+        return Pizzeria::find($id);
+    }
+
+    public function getSearchPizzeria(string $term)
+    {
+        return Pizzeria::where('city', 'LIKE', $term.'%')->get();
+    }
+    public function getSearchResults(string $city)
+    {
+        return Pizzeria::where('city', $city)->get() ?? false;
+    }
+
 
 
 }

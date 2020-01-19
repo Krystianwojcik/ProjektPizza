@@ -4,7 +4,6 @@
 <div class="text-center">
 <b>Lista zamówień dla dostawcy</b>
 </div>
-<div class="container">
     @foreach($orderss->chunk(4) as $chunked_order)
         <div class="row">
         @foreach($chunked_order as $order)
@@ -27,7 +26,7 @@
         </div>
             @endforeach
 
-</div>
+
 @endsection
 
 @section('scripts')
