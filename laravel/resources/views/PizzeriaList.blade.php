@@ -34,9 +34,14 @@
         <td><a href="{{route('pizzeria', ['city' => $object->city_slug, 'name' => $object->name_slug])}}">Link</a></td>
     </tr>
     @endforeach
-        <td><a href="{{route('panelkucharza')}}">Panel kucharzy</a></td>
-        <td><a href="{{route('paneldostawcy')}}">Panel dostawców</a></td>
+
+
+
 </table>
+
+<a class="btn btn-info" href="{{route('panelkucharza')}}">Panel kucharzy</a>
+<a class="btn btn-info" href="{{route('paneldostawcy')}}">Panel dostawców</a>
+<a class="btn btn-info" href="{{route('creator-pizzy')}}">Kreator pizzy</a>
 @endsection
 
 @section('scripts')

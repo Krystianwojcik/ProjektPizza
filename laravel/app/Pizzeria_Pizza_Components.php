@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pizzeria_Pizza_Components extends Model
 {
     protected $table = 'pizzeria_pizza_components';
+    
+    public function components()
+    {
+        return $this->hasOne('App\Components');
+    }
 }

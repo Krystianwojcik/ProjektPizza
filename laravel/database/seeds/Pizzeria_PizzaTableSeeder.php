@@ -11,11 +11,9 @@ class Pizzeria_PizzaTableSeeder extends Seeder
      */
     public function run()
     {
-        /* Lecture 10 */
         $faker = Faker\Factory::create('pl_PL');
-
-        /* Lecture 10 */
-        for ($i = 1; $i <= 5; $i++)
+        $numer = 1;
+/*        for ($i = 1; $i <= 5; $i++)
         {
             DB::table('pizzeria_pizza')->insert([
                 'pizzeria_id' => $i,
@@ -30,6 +28,19 @@ class Pizzeria_PizzaTableSeeder extends Seeder
                 'name' => 'Margarita z szyną',
                 'price' => $faker->numberBetween(10,20),
             ]);
+        }*/
+   
+        for ($i = 1; $i <= 5; $i++)
+        {
+            for ($j = 1; $j <= 10; $j++)
+            {
+                DB::table('pizzeria_pizza')->insert([
+                    'pizzeria_id' => $i,
+                    'name' => 'Pizza '.$numer,
+                    'price' => $faker->numberBetween(10,20),
+                ]);
+                $numer++;
+            }
         }
     }
 }

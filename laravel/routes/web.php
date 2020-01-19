@@ -11,8 +11,12 @@
 |
 */
 
+
 Route::get('/', 'HomeController@home')->name('homes');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/pizzeriaList', 'HomeController@index')->name('pizzerialist');
+Route::get('/creator-pizzy/', 'CreatorController@index')->name('creator-pizzy');
+
 Route::get('/{city}/{name}/', 'PizzeriaController@index')->name('pizzeria');
 Route::get('/panel_Kucharza', 'HomeController@panelKucharza')->name('panelkucharza');
 Route::get('/panel_Dostawcy', 'HomeController@panelDostawcy')->name('paneldostawcy');
@@ -33,6 +37,11 @@ Route::post('/order/', 'OrderController@index')->name('order');
 Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');
 
 
+
 /* Zmiana statusus zamowienia */
 Route::get('/change_status_order', 'HomeController@change_status_order');
 Route::post('/change_status_order', 'HomeController@change_status_order_function');
+
+/* Creator pobranie listy pizzerii */
+Route::get('/creator_get_pizzerias', 'CreatorController@creator_get_pizzerias');
+Route::post('/creator_get_pizzerias', 'CreatorController@creator_get_pizzerias_function');

@@ -14,16 +14,40 @@ class ComponentsTableSeeder extends Seeder
      
         $faker = Faker\Factory::create('pl_PL');
 
+$components = array( 'Boczek', 'Szynka', 'Salami', 'Ser', 'Pieczarki', 'Papryka', 'Papryka peperoni', 'Ogórek', 'Cebula', 'Pomidor', 'Kukurydza', 'Brokuł', 'Oliwki', 'Ananas');
+
+        foreach($components as $component) {
+            
+            DB::table('components')->insert([
+                'name' => $component,
+                'price' => $faker->numberBetween(1,5),
+            ]);
+        }
+
+        
 
 
-            DB::table('components')->insert([
-                'name' => 'Ser',
-                'price' => '2',
-            ]);
-            DB::table('components')->insert([
-                'name' => 'Szynka',
-                'price' => '3',
-            ]);
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
