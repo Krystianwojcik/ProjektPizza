@@ -43,24 +43,24 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     {
         return Order::find($id);
     }
-    public function getAllPizzeriaWithPizza($return_no, $return_yes)
+    public function getAllPizzeriaWithPizza($return_no)
     {
         $All_pizzerias = Pizzeria::all();
         $return = '';
         foreach($All_pizzerias as $pizzeria) {
-            $pizzerie = $this->getAllPizzasWithPizzeria($pizzeria->id, $return_no, $return_yes);
+            $pizzerie = $this->getAllPizzasWithPizzeria($pizzeria->id, $return_no);
             if($pizzerie) {
                 $return .= '<tr><td>'.$pizzeria->name.'</td><td><table class="table table-sm">'.$pizzerie.'</table></td></tr>';
             }
         }
         return $return;
     }
-    public function getAllPizzasWithPizzeria($id, $return_no, $return_yes)
+    public function getAllPizzasWithPizzeria($id, $return_no)
     {
         $All_pizzas = Pizzeria_Pizza::where('pizzeria_id', $id)->get();
         $return = '';
         foreach($All_pizzas as $pizza) {
-            $pizze = $this->getPizzaComponents($pizza->id, $return_no, $return_yes);
+            $pizze = $this->getPizzaComponents($pizza->id, $return_no);
             if($pizze) {
                 $return .= '<tr><td>'.$pizza->name.'</td><td>'.$pizze.'</td></tr>';
             }
@@ -68,7 +68,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         }
         return $return;
     }
-    public function getPizzaComponents($id, $return_no, $return_yes)
+    public function getPizzaComponents($id, $return_no)
     {
         $All_components = Pizzeria_Pizza_Components::where('pizzeria_pizza_id', $id)->get();
         $return = '';

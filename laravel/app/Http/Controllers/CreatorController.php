@@ -38,10 +38,10 @@ class CreatorController extends Controller
         
     public function creator_get_pizzerias_function(Request $request) {
         $return_no = $request->all()['return_no'];
-        $return_yes = $request->all()['return_yes'];
+/*        $return_yes = $request->all()['return_yes'];*/
  /*        $return_opcional = $request->all()['return_opcional'];*/
         $Pizzerias = $this->fR->getAllPizzeriaWithPizza($return_no);
-        return response()->json(['success'=>$Pizzerias, 'return_no'=>$return_no, 'return_yes'=>$return_yes]);
+        return response()->json(['success'=>$Pizzerias, 'return_no'=>$return_no]);
         
         
     }
