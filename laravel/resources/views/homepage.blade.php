@@ -52,7 +52,7 @@
                                         </svg>
                                     </div>
                                     <h4 class="feature-title h3-mobile">Skomponuj własną pizzę</h4>
-										<a id= "submit" href="{{route('creator')}}">Dalej</a>
+										<a id= "submit" href="{{route('creator-pizzy')}}">Dalej</a>
                                 </div>
                             </div>
                             <div class="feature is-revealing">

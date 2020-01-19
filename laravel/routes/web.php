@@ -13,7 +13,6 @@
 
 
 Route::get('/', 'HomeController@home')->name('homes');
-Route::get('/', 'HomeController@index')->name('home');
 Route::get('/pizzeriaList', 'HomeController@index')->name('pizzerialist');
 Route::get('/creator-pizzy/', 'CreatorController@index')->name('creator-pizzy');
 
