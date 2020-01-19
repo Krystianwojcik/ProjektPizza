@@ -23,7 +23,7 @@ class OrderTableSeeder extends Seeder
             DB::table('order')->insert([
                 'id'=>$i,
                 'user_id'=> $faker->numberBetween(1,10),
-                'status_id'=>$faker->numberBetween(1,5),
+                'status_id'=>$faker->numberBetween(1,6),
                 'pizzeria_id'=>$faker->numberBetween(1,5),
                 'time' => $faker->dateTimeBetween('-10 days', 'now'),
                 /*

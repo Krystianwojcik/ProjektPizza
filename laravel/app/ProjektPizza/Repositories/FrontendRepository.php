@@ -33,10 +33,38 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     {
         return Order::where('status_id', '<=', '2')->get();
     }
+    public function getOrdersForChef()
+    {
+        return Order::where('status_id', '<=', '4')->orderBy('status_id')->get();
+    }
+    public function getOrdersForSupplier()
+    {
+
+       $q= Order::all();
+        $q = ['status_id' => '4'];
+          return Order::where($q)
+              ->orWhere('status_id', '=', '5')
+              ->orderBy('status_id')
+              ->get();
+    }
     public function getOrder($id)
     {
         return Order::find($id);
     }
+    public function getPizzeria($id)
+    {
+        return Pizzeria::find($id);
+    }
+
+    public function getSearchPizzeria(string $term)
+    {
+        return Pizzeria::where('city', 'LIKE', $term.'%')->get();
+    }
+    public function getSearchResults(string $city)
+    {
+        return Pizzeria::where('city', $city)->get() ?? false;
+    }
+
 
 
 }
