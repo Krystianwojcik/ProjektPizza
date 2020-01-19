@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->name('facebook');
+Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 
 Route::get('/', 'HomeController@home')->name('homes');
 Route::get('/pizzeriaList', 'HomeController@index')->name('pizzerialist');
@@ -35,8 +38,7 @@ Route::post('/change_status_order', 'HomeController@change_status_order_function
 Route::get('/creator_get_pizzerias', 'CreatorController@creator_get_pizzerias');
 Route::post('/creator_get_pizzerias', 'CreatorController@creator_get_pizzerias_function');
 
-Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->name('facebook');
-Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 
 
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
