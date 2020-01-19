@@ -20,7 +20,6 @@
       <path value="$PROJECT_DIR$/laravel/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/laravel/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/laravel/vendor/dnoegel/php-xdg-base-dir" />
-      <path value="$PROJECT_DIR$/laravel/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/laravel/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/laravel/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/laravel/vendor/monolog/monolog" />
@@ -92,6 +91,8 @@
       <path value="$PROJECT_DIR$/laravel/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/laravel/vendor/jakub-onderka/php-console-color" />
       <path value="$PROJECT_DIR$/laravel/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/laravel/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/laravel/vendor/league/commonmark-ext-table" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
