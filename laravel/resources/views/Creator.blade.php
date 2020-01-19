@@ -745,58 +745,62 @@ body {
             });
         
         $( "#components_btn" ).click(function(e) {
-            
-            var value = $( "#components_no" ).contents();
-            var i, return_no, tmp;
-            return_no = []
-            for (i = 1; i < value.length; i++) {
-                if(value.get(i).attributes) {
-                    return_no.push(value.get(i).attributes.value.value);
-                }
-            };
-            console.log(return_no);
-            
-            
-            var value = $( "#components_opcional" ).contents();
-            var i, return_opcional, tmp;
-            return_opcional = []
-            for (i = 1; i < value.length; i++) {
-                if(value.get(i).attributes) {
-                    return_opcional.push(value.get(i).attributes.value.value);
-                }
-            };
-            console.log(return_opcional);
-            
-            
-            var value = $( "#components_yes" ).contents();
-            var i, return_yes, tmp;
-            return_yes = []
-            for (i = 1; i < value.length; i++) {
-                if(value.get(i).attributes) {
-                    return_yes.push(value.get(i).attributes.value.value);
-                }
-            };
-            console.log(return_yes);
-            
-            
-            
-            if(return_no || return_yes) {
-                    e.preventDefault();
-                    $.ajax({
-                       type:'POST',
-                       url:'/creator_get_pizzerias',
-                       data:{return_no: return_no, return_opcional: return_opcional, return_yes: return_yes},
-                       success:function(data){
-                            /*alert(data.success);*/
-                            console.log(data.success);
-                           $("#pizzeria_list").html(data.success);
-                           /*$("#popup-pizzerias").show();*/
-                           $('#popup-pizzerias').modal('show')
+            var return_yes = [], return_no = [], return_opcional = [];
+            var components_no = $( "#components_no" ).contents();
+            var components_opcional = $( "#components_opcional" ).contents();
+            var components_yes = $( "#components_yes" ).contents();
+            console.log(components_no.length);
+            console.log(components_opcional.length);
+            console.log(components_yes.length);
+            if(components_no.length > 1 && components_yes.length > 1) {
+                var i;
+                for (i = 1; i < components_no.length; i++) {
+                    if(components_no.get(i).attributes) {
+                        return_no.push(components_no.get(i).attributes.value.value);
+                    }
+                };
 
-                       }
-                    });
+
+                var i;
+                for (i = 1; i < components_opcional.length; i++) {
+                    if(components_opcional.get(i).attributes) {
+                        return_opcional.push(components_opcional.get(i).attributes.value.value);
+                    }
+                };
+
+
+                var i;
+                for (i = 1; i < components_yes.length; i++) {
+                    if(components_yes.get(i).attributes) {
+                        return_yes.push(components_yes.get(i).attributes.value.value);
+                    }
+                };
+                console.log(return_no);
+                console.log(return_opcional);
+                console.log(return_yes);
+
+
+
+                if(return_no || return_yes) {
+                        e.preventDefault();
+                        $.ajax({
+                           type:'POST',
+                           url:'/creator_get_pizzerias',
+                           data:{return_no: return_no, return_opcional: return_opcional, return_yes: return_yes},
+                           success:function(data){
+                                /*alert(data.success);*/
+                                console.log(data.success);
+                               $("#pizzeria_list").html(data.success);
+                               $('#popup-pizzerias').modal('show')
+
+                           }
+                        });
+                }
+            } else if(components_no.length <= 1 ) {
+                alert("Wybierz składniki, których nie chcesz na pizzy")
+            } else if(components_yes.length <= 1 ) {
+                alert("Wybierz składniki, które chcesz na pizzy")
             }
-            
             
             
         });

@@ -25,11 +25,11 @@ class CreatorController extends Controller
 
     public function index()
     {
-/*        var_dump($this->fR->getPizzaComponents(6, 4));
+/*        $this->fR->getPizzaComponents(2, '', 6);
         echo '<br />';
-        var_dump($this->fR->getPizzaComponents(6, array(4,5)));
-        echo '<br />';
-        var_dump($this->fR->getPizzaComponents(6, 2));*/
+        $this->fR->getPizzaComponents(2, '', array(6,2));
+        echo '<br />';*/
+        $this->fR->getPizzaComponents(2, '', array(6,2,14));
         $components = $this->fR->getAllComponents();
         return view('Creator',['components'=>$components]);
 
@@ -38,9 +38,9 @@ class CreatorController extends Controller
         
     public function creator_get_pizzerias_function(Request $request) {
         $return_no = $request->all()['return_no'];
-/*        $return_yes = $request->all()['return_yes'];*/
+        $return_yes = $request->all()['return_yes'];
  /*        $return_opcional = $request->all()['return_opcional'];*/
-        $Pizzerias = $this->fR->getAllPizzeriaWithPizza($return_no);
+        $Pizzerias = $this->fR->getAllPizzeriaWithPizza($return_no, $return_yes);
         return response()->json(['success'=>$Pizzerias, 'return_no'=>$return_no]);
         
         
