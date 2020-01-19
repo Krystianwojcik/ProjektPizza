@@ -29,9 +29,9 @@
       <td>{{$order->pizzeria->name}}</td>
       <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}</td>
 @if($order->status->id == '4')
-                    <td><button class="btn btn-warning text-white change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">W drodze</button></td>
+                    <td><button class="btn btn-sm btn-warning text-white change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">W drodze</button></td>
                 @else
-                    <td><button class="btn btn-primary change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Dostarczono</button></td>
+                    <td><button class="btn btn-sm btn-primary change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Dostarczono</button></td>
                 @endif
     </tr>
           

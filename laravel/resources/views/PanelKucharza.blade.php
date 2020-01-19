@@ -1,37 +1,41 @@
 @extends('layouts.front2')
 @section('content')
-<div class="text-center">
-    <b>Lista zamówień dla dostawcy</br><br></b>
-</div>
-    @foreach($orderss->chunk(4) as $chunked_order)
-        <div class="row">
-            @foreach($chunked_order as $order)
-                <div class="zamowienie col-md-3 col-sm-6">
-                    <b>Id zamowienia: </b> {{$order->id}}<br>
-                    <b>Staus: </b>{{$order->status->name}}<br>
-                    <b>Imię: </b>{{$order->user->name}}<br>
-                    <b>Nazwisko: </b>{{$order->user->surname}}<br>
-                    <b>miasto: </b>{{$order->city}}<br>
-                    <b>Nazwa Pizzerii: </b>{{$order->pizzeria->name}}<br>
-                    <b>Z adresu: </b>{{$order->pizzeria->street}} {{$order->pizzeria->number}}<br>
-                    <b>Na adres: </b>{{$order->street}}<br>
+<div class="container">
+
+<h1 class="text-center">Lista zamówień dla kucharza</h1>
+
+   <table class="table table-sm">
+   <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Status</th>
+    
+      <th scope="col">Adres</th>
+      <th scope="col">Zmień status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($orderss as $order)
+        <tr>
+             <td>{{$order->id}}</td>
+                   <td>{{$order->status->name}}</td>
+
+                   <td>{{$order->pizzeria->name}}</td>
                     @if($order->status->id == '1')
-                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Realizuj</button>
-                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+2}}">Na produkcje</button>
-                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="7">Anuluj</button>
-                    @elseif($order->status->id == '2')
-                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Na produkcje</button>
-                    @elseif($order->status->id == '3')
-                        <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Czeka na dostawcę</button>
-                    @endif
-                </div>
-            @endforeach
-        </div>
+                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Realizuj</button></td>
+                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+2}}">Na produkcje</button></td>
+                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="7">Anuluj</button></td>
+                 @elseif($order->status->id == '2')
+                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Na produkcje</button></td>
+                  @elseif($order->status->id == '3')
+                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Czeka na dostawcę</button></td>
+                  @endif
+        </tr>
     @endforeach
 
 
-
-
+       </tbody>
+</table>
 
 @endsection
 

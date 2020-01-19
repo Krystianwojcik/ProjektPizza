@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+<title>Generator Pizzy</title>
     <link rel="stylesheet" href="{{asset('css/styl.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('head')
 
@@ -23,7 +22,78 @@
 
     <meta name="description" content="Zamów pizze nie wychodząc z domu"/>
     <meta name="keywords" content= "pizza,zamówienie,jedzenie"/>
+ 
+   
+<style>
+body,
+html {
+    font: normal normal normal 100%/1.4 tahoma, sans-serif;
+    background: #f9f9f9;
+    color: #000
+}
 
+body {
+    font-size: .8em
+}
+
+[data-draggable=target] {
+    float: left;
+    list-style-type: none;
+    width: 100%;
+    height: 50vh;
+    overflow-y: auto;
+    margin: 0 .5em .5em 0;
+    padding: .5em;
+    border: 2px solid #888;
+    border-radius: .2em;
+    background: #ddd;
+    color: #555
+}
+
+[data-draggable=target][aria-dropeffect=move] {
+    border-color: #68b;
+    background: #fff
+}
+
+[data-draggable=target][aria-dropeffect=move].dragover,
+[data-draggable=target][aria-dropeffect=move]:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #68b
+}
+
+[data-draggable=item] {
+    display: block;
+    list-style-type: none;
+    margin: 0 0 2px 0;
+    padding: .2em .4em;
+    border-radius: .2em;
+    line-height: 1.3;
+    text-align: center;
+}
+
+[data-draggable=item]:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px #68b, inset 0 0 0 1px #ddd
+}
+
+[data-draggable=item][aria-grabbed=true] {
+    background: #8ad;
+    color: #fff
+}     </style> 
+    
+
+ 
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+
+
+ 
 </head>
 <body>
 
