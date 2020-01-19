@@ -39,10 +39,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('pizzerialist')}}">Wybór pizzerii</a>
             </li>
+            @auth
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Konto użytkownika
                 </a>
+
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Mój profil</a>
                     <a class="dropdown-item" href="#">Moje zamówienia</a>
@@ -61,14 +63,17 @@
 
 
                 </div>
+                    @endauth
             </li>
 
+            @guest
             <li>
-                <a class="nav-link" href="#">Zaloguj</a>
+                <a class="nav-link" href="{{ route('login') }}">Zaloguj</a>
             </li>
             <li class="nav-item nav-right">
-                <a class="nav-link" href="#">Zarejestruj</a>
+                <a class="nav-link" href="{{ route('register') }}">Zarejestruj</a>
             </li>
+                @endguest
     </div>
 </nav>
 <div class="container">
