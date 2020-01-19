@@ -1,33 +1,44 @@
 @extends('layouts.front2')
 @section('content')
+<div class="container">
 
-<div class="text-center">
-<b>Lista zamówień dla dostawcy</b>
-</div>
-    @foreach($orderss->chunk(4) as $chunked_order)
-        <div class="row">
-        @foreach($chunked_order as $order)
-            <div class="zamowienie col-md-3 col-sm-6">
-                <b>Id zamowienia: </b> {{$order->id}}<br>
-                <b>Staus: </b>{{$order->status->name}}<br>
-                <b>Imię: </b>{{$order->user->name}}<br>
-                <b>Nazwisko: </b>{{$order->user->surname}}<br>
-                <b>miasto: </b>{{$order->city}}<br>
-                <b>Nazwa Pizzerii: </b>{{$order->pizzeria->name}}<br>
-                <b>Z adresu: </b>{{$order->pizzeria->street}} {{$order->pizzeria->number}}<br>
-                <b>Na adres: </b>{{$order->street}}<br>
-                @if($order->status->id == '4')
-                    <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">W drodze</button><br>
+<h1 class="text-center">Lista zamówień dla dostawcy</h1>
+
+   <table class="table table-sm">
+   <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Status</th>
+      <th scope="col">Imię</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Miasto</th>
+      <th scope="col">Odbiór</th>
+      <th scope="col">Adres</th>
+      <th scope="col">Zmień status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($orderss as $order)
+           
+    <tr>
+      <th scope="row">{{$order->id}}</th>
+      <td>{{$order->status->name}}</td>
+      <td>{{$order->user->name}}</td>
+      <td>{{$order->user->surname}}</td>
+      <td>{{$order->city}}</td>
+      <td>{{$order->pizzeria->name}}</td>
+      <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}</td>
+@if($order->status->id == '4')
+                    <td><button class="btn btn-warning text-white change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">W drodze</button></td>
                 @else
-                    <button class="btn btn-primary btn change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Dostarczono</button><br>
+                    <td><button class="btn btn-primary change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Dostarczono</button></td>
                 @endif
-            </div>
-        @endforeach
-        </div>
-            @endforeach
-
-
-@endsection
+    </tr>
+          
+    @endforeach
+       </tbody>
+</table>
+</div>
 
 @section('scripts')
 <script>
