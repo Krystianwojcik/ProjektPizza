@@ -62,7 +62,8 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         foreach($All_pizzas as $pizza) {
             $pizze = $this->getPizzaComponents($pizza->id, $return_no, $return_yes);
             if($pizze) {
-                $return .= '<tr><td>'.$pizza->name.'</td><td>'.$pizze.'</td></tr>';
+                $zamow = 'zamów';
+                $return .= '<tr><td>'.$pizza->name.'</td><td>'.$zamow.'</td><td>'.$pizze.'</td></tr>';
             }
             
         }
@@ -96,12 +97,12 @@ class FrontendRepository implements FrontendRepositoryInterface  {
                 }
             }
             
-                if($i>=1) {
-                    $return .= ', ';
-                }
-                $return .= $this->getPizzaComponents_Component($component->components_id);
-                $i++;
+            if($i>=1) {
+                $return .= ', ';
             }
+            $return .= $this->getPizzaComponents_Component($component->components_id);
+            $i++;
+        }
 
         if($wyklucz == 1 || $zawiera == 0) {
             return '';
