@@ -17,10 +17,13 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('surname');
-            $table->string('email')->unique();
+            $table->string('email')->nullable()->unique();
             $table->string('phone')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->timestamps();
+
+            $table->rememberToken();
+            $table->string('facebook_id')->nullable()->unique();
         });
     }
 
