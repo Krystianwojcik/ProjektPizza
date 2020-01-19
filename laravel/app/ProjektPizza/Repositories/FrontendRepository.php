@@ -98,7 +98,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         }
         return $return;
     }
-    public function getPizzaComponents($id, $return_no, $return_yes)
+    public function getPizzaComponents($id, $return_no = NULL, $return_yes = NULL)
     {
         $All_components = Pizzeria_Pizza_Components::where('pizzeria_pizza_id', $id)->get();
         $return = '';
@@ -133,7 +133,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
             $i++;
         }
 
-        if($wyklucz == 1 || $zawiera == 0) {
+        if($wyklucz == 1 || ($return_yes && $zawiera == 0)) {
             return '';
         } else {
             return $return;

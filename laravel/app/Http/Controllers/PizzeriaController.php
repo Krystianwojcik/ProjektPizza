@@ -14,7 +14,18 @@ class PizzeriaController extends Controller
     
     public function index($city_slug, $name_slug)
     {
-        $object = $this->fR->getPizzeriaObject($city_slug, $name_slug);
-        return view('PizzzeriaObject',['object'=>$object]);
+        
+        $return['object'] = $this->fR->getPizzeriaObject($city_slug, $name_slug);
+            echo '<br />';
+            echo '<br />';
+            echo '<br />';
+            echo '<br />';
+            echo '<br />';
+            echo '<br />';
+        $return['components'] = array();
+            foreach($return['object']->PizzeriaPizza()->get() as $pizza) {
+             $return['components'][] = $this->fR->getPizzaComponents($pizza->id);
+            }
+        return view('PizzzeriaObject',['return'=>$return]);
     }
 }
