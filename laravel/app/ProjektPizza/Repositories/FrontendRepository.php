@@ -43,37 +43,59 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     {
         return Order::find($id);
     }
-    public function getAllPizzeriaWithPizza($return_no)
+    public function getAllPizzeriaWithPizza($return_no, $return_yes)
     {
         $All_pizzerias = Pizzeria::all();
         $return = '';
         foreach($All_pizzerias as $pizzeria) {
-            $return .= '<tr><td>'.$pizzeria->name.'</td><td><table class="table table-sm">'.$this->getAllPizzasWithPizzeria($pizzeria->id, $return_no).'</table></td></tr>';
+            $pizzerie = $this->getAllPizzasWithPizzeria($pizzeria->id, $return_no, $return_yes);
+            if($pizzerie) {
+                $return .= '<tr><td>'.$pizzeria->name.'</td><td><table class="table table-sm">'.$pizzerie.'</table></td></tr>';
+            }
         }
         return $return;
     }
-    public function getAllPizzasWithPizzeria($id, $return_no)
+    public function getAllPizzasWithPizzeria($id, $return_no, $return_yes)
     {
         $All_pizzas = Pizzeria_Pizza::where('pizzeria_id', $id)->get();
         $return = '';
         foreach($All_pizzas as $pizza) {
-            $return .= '<tr><td>'.$pizza->name.'</td><td>'.$this->getPizzaComponents($pizza->id, $return_no).'</td></tr>';
+            $pizze = $this->getPizzaComponents($pizza->id, $return_no, $return_yes);
+            if($pizze) {
+                $return .= '<tr><td>'.$pizza->name.'</td><td>'.$pizze.'</td></tr>';
+            }
+            
         }
         return $return;
     }
-    public function getPizzaComponents($id, $return_no)
+    public function getPizzaComponents($id, $return_no, $return_yes)
     {
-        $All_components = Pizzeria_Pizza_Components::where('pizzeria_pizza_id' , $id)->get();
+        $All_components = Pizzeria_Pizza_Components::where('pizzeria_pizza_id', $id)->get();
         $return = '';
+        $wyklucz = 0;
         $i = 0;
         foreach($All_components as $component) {
+            if(is_array($return_no)) {
+                if(in_array($component->components_id, $return_no)) {
+                    $wyklucz = 1;
+                }
+            } else {
+                if($component->components_id == $return_no) {
+                    $wyklucz = 1;
+                }
+            }
             if($i>=1) {
                 $return .= ', ';
             }
             $return .= $this->getPizzaComponents_Component($component->components_id);
             $i++;
         }
-        return $return;
+            if($wyklucz == 1 ) {
+                return '';
+            } else {
+                return $return;
+            }
+        
     }
     public function getPizzaComponents_Component($id)
     {
