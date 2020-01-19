@@ -21,7 +21,7 @@
         <p class="text-center red bolded">{{session('nopizzeria')}}</p>
     @endif
 
-<table>
+<table class="table">
     @foreach($objects as $object)
     <tr>
         <td>{{$object->name}}</td>

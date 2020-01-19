@@ -127,6 +127,7 @@ body {
             <li class="nav-item nav-right">
                 <a class="nav-link" href="#">Zarejestruj</a>
             </li>
+        </ul>
     </div>
 </nav>
 <div class="container">
