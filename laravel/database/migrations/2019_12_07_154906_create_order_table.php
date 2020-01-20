@@ -21,14 +21,14 @@ class CreateOrderTable extends Migration
             $table->foreign('status_id')->references('id')->on('order_status');
             $table->bigInteger('pizzeria_id')->unsigned();
             $table->foreign('pizzeria_id')->references('id')->on('pizzeria');
-            $table->dateTime('time');
+            $table->dateTime('time')->t
             $table->string('name');
             $table->string('surname');
             $table->string('street');
             $table->string('city');
             $table->string('zipcode');
             $table->timestamps();
-            
+
         });
     }
 

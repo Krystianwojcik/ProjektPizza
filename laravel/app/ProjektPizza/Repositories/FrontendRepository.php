@@ -1,7 +1,7 @@
 <?php
 
 namespace App\ProjektPizza\Repositories;
-
+use DateTime;
 use App\Pizzeria;
 use App\Pizzeria_Pizza;
 use App\ProjektPizza\Interfaces\FrontendRepositoryInterface;
@@ -11,6 +11,7 @@ use App\Order;
 use App\Order_Status;
 use App\Components;
 use App\Pizzeria_Pizza_Components;
+use http\Env\Request;
 
 class FrontendRepository implements FrontendRepositoryInterface  {
 
@@ -94,7 +95,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
                 $zamow = 'zamów';
                 $return .= '<tr><td>'.$pizza->name.'</td><td>'.$zamow.'</td><td>'.$pizze.'</td></tr>';
             }
-            
+
         }
         return $return;
     }
@@ -115,7 +116,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
                     $wyklucz = 1;
                 }
             }
-            
+
             if(is_array($return_yes)) {
                 if(in_array($component->components_id, $return_yes)) {
                     $zawiera++;
@@ -125,7 +126,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
                     $zawiera++;
                 }
             }
-            
+
             if($i>=1) {
                 $return .= ', ';
             }
@@ -143,6 +144,23 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     {
         $component = Components::where('id', $id)->first();
          return $component->name;
+    }
+
+    public function addOrder($request)
+    {
+        $now=new DateTime();
+        $order= new Order;
+        $order->user_id=1;
+        $order->status_id = 1;
+        $order->pizzeria_id=$request->pizzeria_id;
+        $order->name=$request->name;
+        $order->zipcode=$request->zpicode;
+        $order->surname=$request->surname;
+        $order->street=$request->street;
+        $order->city=$request->city;
+        $order->time=$now;
+        $order->save();
+
     }
 
 
