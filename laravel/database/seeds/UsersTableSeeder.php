@@ -24,6 +24,7 @@ class UsersTableSeeder extends Seeder
                 'email'=>$faker->email,
                 'phone'=>$faker->phoneNumber,
                 'password'=> bcrypt('haslo'),
+                'role_id'=>1,
 
             ]);
         }

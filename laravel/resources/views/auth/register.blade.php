@@ -89,6 +89,9 @@
                             </div>
                         </div>
 
+                     <input id="role_id" type="text" class="form-control is-invalid" name="role_id" value="1" required autocomplete="role_id">
+
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

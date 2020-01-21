@@ -25,10 +25,11 @@ class CreateUsersTable extends Migration
 
             $table->rememberToken()->nullable();
             $table->string('facebook_id')->nullable()->unique();
+            $table->Integer('role_id')->unsigned();
+            $table->foreign('role_id')->references('id')->on('role')->onDelete('cascade');
+
         });
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('id')->references('user_id')->on('user_role')->onDelete('cascade');
-        });
+
     }
     /**
      * Reverse the migrations.
