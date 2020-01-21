@@ -13,4 +13,5 @@ class Pizzeria_Pizza extends Model
         return $this->belongsToMany('App\Pizzeria_Pizza_Components');
     }
     
+    
 }

@@ -31,7 +31,7 @@
         <td>{{$object->phone}}</td>
         <td>{{$object->city_slug}}</td>
         <td>{{$object->pizzeria_name_slug}}</td>
-        <td><a href="{{route('pizzeria', ['city' => $object->city_slug, 'name' => $object->name_slug])}}">Link</a></td>
+        <td><a class="btn btn-sm btn-primary" href="{{route('pizzeria', ['city' => $object->city_slug, 'name' => $object->name_slug])}}">Przejdz do pizzerii</a></td>
     </tr>
     @endforeach
 
