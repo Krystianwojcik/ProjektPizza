@@ -15,7 +15,7 @@ class User_RoleTableSeeder extends Seeder
         for($i=1; $i<=10; $i++)
         {
             DB::table('user_role')->insert([
-                'user_id'=>$faker->numberBetween(1,10),
+                'user_id'=>$i,
                 'role_id'=>$faker->numberBetween(1,3),
             ]);
         }
