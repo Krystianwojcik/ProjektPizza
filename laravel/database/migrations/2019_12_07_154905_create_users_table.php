@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
             $table->string('name');
             $table->string('surname')->nullable();
             $table->string('email')->nullable()->unique();
@@ -25,8 +26,11 @@ class CreateUsersTable extends Migration
             $table->rememberToken()->nullable();
             $table->string('facebook_id')->nullable()->unique();
         });
+        Schema::table('users', function (Blueprint $table) {
+            $table->bigInteger('status')->unsigned()->index();
+            $table->foreign('status')->references('user_id')->on('user_role')->onDelete('cascade');
+        });
     }
-
     /**
      * Reverse the migrations.
      *
