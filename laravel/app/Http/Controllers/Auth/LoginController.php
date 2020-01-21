@@ -97,6 +97,7 @@ class LoginController extends Controller
             "{$provider}_id" => $socialiteUser->getId(),
             'email' => $socialiteUser->getEmail(),
             'name' => $socialiteUser->getName(),
+            'role_id' => 1,
         ]);
     }
 
