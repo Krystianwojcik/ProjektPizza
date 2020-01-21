@@ -29,8 +29,19 @@ Route::get('/register', 'HomeController@register')->name('register');
 Route::get('/creator', 'HomeController@creator')->name('creator');
 Route::get('/searchPizzeria', 'HomeController@searchPizzeria');
 Route::post('/pizzeriasearch', 'HomeController@pizzeriasearch')->name('pizzeriasearch');
+
+
 Route::post('/order/', 'OrderController@index')->name('order');
+Route::get('/order/', 'OrderController@index')->name('order');
+
+
+Route::post('/order/{idpizzeria}/{idpizza}', 'OrderController@zkreatora')->name('order2');
+Route::get('/order/{idpizzeria}/{idpizza}', 'OrderController@zkreatora')->name('order2');
+
 Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');
+
+
+
 /* Zmiana statusus zamowienia */
 Route::get('/change_status_order', 'HomeController@change_status_order');
 Route::post('/change_status_order', 'HomeController@change_status_order_function');
