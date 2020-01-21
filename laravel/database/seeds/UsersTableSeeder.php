@@ -14,16 +14,6 @@ class UsersTableSeeder extends Seeder
 
         $faker = Faker\Factory::create('pl_PL');
         
-
-        DB::table('users')->insert([
-            'name'=> 'user',
-            'surname'=>'user',
-            'email'=>'user@example.com',
-            'phone'=>'123123123',
-            'password'=> bcrypt('user'),
-            'role'=> '1',
-        ]);
-        
         for($i=1;$i<=10;$i++)
         {
             DB::table('users')->insert([
@@ -32,8 +22,6 @@ class UsersTableSeeder extends Seeder
                 'email'=>$faker->email,
                 'phone'=>$faker->phoneNumber,
                 'password'=> bcrypt('haslo'),
-                'role'=> '1',
-
             ]);
         }
 
