@@ -23,6 +23,13 @@ class OrderController extends Controller
         $id_pizza = $request->pizzeria_pizza;
         return view('Order',['id_pizza'=>$id_pizza], ['id_pizzeria'=>$id_pizzeria]);
     }
+    public function zkreatora($idpizzeria, $idpizza)
+    {
+        /*dd($request->pizzeria);*/
+        $id_pizzeria = $idpizzeria;
+        $id_pizza = $idpizza;
+        return view('Order',['id_pizza'=>$id_pizza], ['id_pizzeria'=>$id_pizzeria]);
+    }
 
     public function thankyou(Request $request)
     {

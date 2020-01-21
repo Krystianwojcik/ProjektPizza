@@ -38,7 +38,8 @@
     </div>
 
 <div>    {!! Form::label('street', 'Ulica', ['class' => 'col-md-4 ']) !!}
-    {!! Form::text('street', '' , ['class' => 'col-md-4 ']) !!}</div>
+    {!! Form::text('street', '' , ['class' => 'col-md-4 ']) !!}
+</div>
 
   <div>
         {!! Form::label('city', 'Miasto', ['class' => 'col-md-4 ']) !!}
@@ -49,6 +50,7 @@
         {!! Form::label('zpicode', 'Kod pocztowy', ['class' => 'col-md-4 ']) !!}
     {!! Form::text('zpicode', '' , ['class' => 'col-md-4 ']) !!}
     </div>
+
 
     {!! Form::submit('Zamów'); !!}
 {!! Form::close() !!}

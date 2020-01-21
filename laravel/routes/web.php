@@ -33,6 +33,9 @@ Route::post('/pizzeriasearch', 'HomeController@pizzeriasearch')->name('pizzerias
 Route::post('/order/', 'OrderController@index')->name('order');
 Route::get('/order/', 'OrderController@index')->name('order');
 
+Route::post('/order/{idpizzeria}/{idpizza}', 'OrderController@zkreatora')->name('order2');
+Route::get('/order/{idpizzeria}/{idpizza}', 'OrderController@zkreatora')->name('order2');
+
 
 Route::post('/thankyou/', 'OrderController@thankyou')->name('thankyou');
 

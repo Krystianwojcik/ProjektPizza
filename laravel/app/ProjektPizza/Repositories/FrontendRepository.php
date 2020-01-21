@@ -89,10 +89,11 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     {
         $All_pizzas = Pizzeria_Pizza::where('pizzeria_id', $id)->get();
         $return = '';
+
         foreach($All_pizzas as $pizza) {
             $pizze = $this->getPizzaComponents($pizza->id, $return_no, $return_yes);
             if($pizze) {
-                $zamow = 'zamów';
+                $zamow = "<a href='/order/".$pizza->pizzeria_id."/".$pizza->id."'>Zamów</a>";
                 $return .= '<tr><td>'.$pizza->name.'</td><td>'.$zamow.'</td><td>'.$pizze.'</td></tr>';
             }
 
