@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('facebook_id')->nullable()->unique();
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('status')->unsigned();
+            $table->bigInteger('status')->unsigned()->index();
             $table->foreign('status')->references('user_id')->on('user_role')->onDelete('cascade');
         });
     }
