@@ -109,25 +109,45 @@ body {
             <li class="nav-item">
                 <a class="nav-link" href="{{route('pizzerialist')}}">Wybór pizzerii</a>
             </li>
+            @auth
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Konto użytkownika
                 </a>
+
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Mój profil</a>
                     <a class="dropdown-item" href="#">Moje zamówienia</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Wyloguj</a>
+
+
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+
                 </div>
+                    @endauth
             </li>
 
+            @guest
             <li>
-                <a class="nav-link" href="#">Zaloguj</a>
+                <a class="nav-link" href="{{ route('login') }}">Zaloguj</a>
             </li>
             <li class="nav-item nav-right">
-                <a class="nav-link" href="#">Zarejestruj</a>
+                <a class="nav-link" href="{{ route('register') }}">Zarejestruj</a>
             </li>
+
         </ul>
+
+                @endguest
+
     </div>
 </nav>
 <div class="container">

@@ -6,14 +6,18 @@
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
 @endsection
 @section('content')
+
 <body class="is-boxed has-animations">
+
 
     <div class="body-wrap boxed-container">
 		<header>
 			<img src="{{asset('img/logo0.png')}}" alt="logo" class="img-fluid"/>
 		</header>
 			<nav>
-			<a class="menu active" href="#">Strona główna</a><a class="menu" href="{{route('register')}}">Załóż konto</a><a class="menu" href="{{route('login')}}">Zaloguj się</a><a class="menu" href="#">Kontakt</a>
+			<a class="menu active" href="{{route('homes')}}">Strona główna</a>@guest<a class="menu" href="{{route('register')}}">Załóż konto</a><a class="menu" href="{{route('login')}}">Zaloguj się</a>@endguest<a class="menu" href="#">Kontakt</a>@auth<a class="menu" href="#">Mój profil</a><a class="menu" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>@endauth
 			</nav>
 
         <main>
