@@ -34,7 +34,6 @@ class OrderController extends Controller
 
     public function thankyou(Request $request)
     {
-       // dd($request->all());
         //dd($request->all());
         /*
         $validator = Validator::make($request->all(), [

@@ -1,3 +1,5 @@
+@extends('layouts.front2')
+@section('content')
 <h1>Zamówienie</h1>
 
 @error('name')
@@ -16,7 +18,7 @@
 <div class="alert alert-danger">Musisz wpisac swoj kod pocztowy</div>
 @enderror
 
-
+<!--
 {!! Form::open(['url' => 'thankyou']) !!}
 
    <div>
@@ -52,5 +54,52 @@
 
     {!! Form::submit('Zamów'); !!}
 {!! Form::close() !!}
+-->
+
+<form method="POST" action="{{ route('thankyou') }}">
+    {{ csrf_field() }}
+    <div class="form-group col-md-4">
+        <label for="pizzeria_id">Pizzeria_id</label>
+        <input type="text" name="pizzeria_id" class="form-control" id="pizzeria_id" aria-describedby="pizzeria_id" placeholder="pizzeria_id" value="{{$id_pizzeria}}" required readonly>
+        <small id="podpowiedzEmail" class="form-text text-muted">W powyższym polu jest numer pizzy</small>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="pizza_id">pizza_id</label>
+        <input type="text" name="pizza_id" class="form-control" id="pizza_id" placeholder="pizza_id" value="{{$id_pizza}}" required readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="name" id="name">Imię</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="Twoje imię" @auth value="{{ Auth::user()->name }}" @endauth  required>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="surname" id="surname">Nazwisko</label>
+        <input type="text" class="form-control" id="surname" name="surname" placeholder="Nazwisko" @auth value="{{ Auth::user()->surname }}" @endauth required>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="street">Ulica</label>
+        <input type="text" class="form-control" name="street" id="street" placeholder="Ulica" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="city">Miasto</label>
+        <input type="text" class="form-control" name="city" id="city" placeholder="Miasto" value=""  required>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="zpicode">Kod pocztowy</label>
+        <input type="text" class="form-control" name="zpicode" id="zpicode" placeholder="Kod pocztowy(12345)" value=""  required >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zamów</button>
+</form>
+
+
+
+
+
+
+
+
+
+@endsection
+
 
 

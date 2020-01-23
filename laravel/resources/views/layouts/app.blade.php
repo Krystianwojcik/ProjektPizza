@@ -25,12 +25,73 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+
+    <style>
+        body,
+        html {
+            font: normal normal normal 100%/1.4 tahoma, sans-serif;
+            background: #f9f9f9;
+            color: #000
+        }
+
+        body {
+            font-size: .8em
+        }
+
+        [data-draggable=target] {
+            float: left;
+            list-style-type: none;
+            width: 100%;
+            height: 50vh;
+            overflow-y: auto;
+            margin: 0 .5em .5em 0;
+            padding: .5em;
+            border: 2px solid #888;
+            border-radius: .2em;
+            background: #ddd;
+            color: #555
+        }
+
+        [data-draggable=target][aria-dropeffect=move] {
+            border-color: #68b;
+            background: #fff
+        }
+
+        [data-draggable=target][aria-dropeffect=move].dragover,
+        [data-draggable=target][aria-dropeffect=move]:focus {
+            outline: 0;
+            box-shadow: 0 0 0 1px #fff, 0 0 0 3px #68b
+        }
+
+        [data-draggable=item] {
+            display: block;
+            list-style-type: none;
+            margin: 0 0 2px 0;
+            padding: .2em .4em;
+            border-radius: .2em;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        [data-draggable=item]:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px #68b, inset 0 0 0 1px #ddd
+        }
+
+        [data-draggable=item][aria-grabbed=true] {
+            background: #8ad;
+            color: #fff
+        }     </style>
+
+
+
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}"><img src="{{asset('img/pizza-24-284287.png')}}"/>
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

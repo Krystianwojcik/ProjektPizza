@@ -14,7 +14,7 @@
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
 
-      
+
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('head')
 
@@ -22,67 +22,68 @@
 
     <meta name="description" content="Zamów pizze nie wychodząc z domu"/>
     <meta name="keywords" content= "pizza,zamówienie,jedzenie"/>
- 
-   
-<style>
-body,
-html {
-    font: normal normal normal 100%/1.4 tahoma, sans-serif;
-    background: #f9f9f9;
-    color: #000
-}
 
-body {
-    font-size: .8em
-}
 
-[data-draggable=target] {
-    float: left;
-    list-style-type: none;
-    width: 100%;
-    height: 50vh;
-    overflow-y: auto;
-    margin: 0 .5em .5em 0;
-    padding: .5em;
-    border: 2px solid #888;
-    border-radius: .2em;
-    background: #ddd;
-    color: #555
-}
+    <style>
+        body,
+        html {
+            font: normal normal normal 100%/1.4 tahoma, sans-serif;
+            background: #f9f9f9;
+            color: #000
+        }
 
-[data-draggable=target][aria-dropeffect=move] {
-    border-color: #68b;
-    background: #fff
-}
+        body {
+            font-size: .8em
+        }
 
-[data-draggable=target][aria-dropeffect=move].dragover,
-[data-draggable=target][aria-dropeffect=move]:focus {
-    outline: 0;
-    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #68b
-}
+        [data-draggable=target] {
+            float: left;
+            list-style-type: none;
+            width: 100%;
+            height: 50vh;
+            overflow-y: auto;
+            margin: 0 .5em .5em 0;
+            padding: .5em;
+            border: 2px solid #888;
+            border-radius: .2em;
+            background: #ddd;
+            color: #555
+        }
 
-[data-draggable=item] {
-    display: block;
-    list-style-type: none;
-    margin: 0 0 2px 0;
-    padding: .2em .4em;
-    border-radius: .2em;
-    line-height: 1.3;
-    text-align: center;
-}
+        [data-draggable=target][aria-dropeffect=move] {
+            border-color: #68b;
+            background: #fff
+        }
 
-[data-draggable=item]:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px #68b, inset 0 0 0 1px #ddd
-}
+        [data-draggable=target][aria-dropeffect=move].dragover,
+        [data-draggable=target][aria-dropeffect=move]:focus {
+            outline: 0;
+            box-shadow: 0 0 0 1px #fff, 0 0 0 3px #68b
+        }
 
-[data-draggable=item][aria-grabbed=true] {
-    background: #8ad;
-    color: #fff
-}     </style> 
-    
+        [data-draggable=item] {
+            display: block;
+            list-style-type: none;
+            margin: 0 0 2px 0;
+            padding: .2em .4em;
+            border-radius: .2em;
+            line-height: 1.3;
+            text-align: center;
+        }
 
- 
+        [data-draggable=item]:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px #68b, inset 0 0 0 1px #ddd
+        }
+
+        [data-draggable=item][aria-grabbed=true] {
+            background: #8ad;
+            color: #fff
+        }     </style>
+
+
+
+
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
@@ -93,12 +94,12 @@ body {
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
 
 
- 
+
 </head>
 <body>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{route('homes')}}">Nasza strona</a>
+    <a class="navbar-brand" href="{{route('homes')}}"><img src="{{asset('img/pizza-24-284287.png')}}"/> ProjektPizza</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -137,7 +138,7 @@ body {
             </li>
 
             @guest
-            <li>
+            <li class="nav-item nav-right">
                 <a class="nav-link" href="{{ route('login') }}">Zaloguj</a>
             </li>
             <li class="nav-item nav-right">
@@ -155,7 +156,7 @@ body {
 
 
 
-<footer>
+<footer id="sticky-footer">
     <p class="text-center">&copy; 2020 PIZZA BEST AND THE BEST</p>
 </footer>
 </div>
