@@ -39,9 +39,7 @@
 
 </table>
 
-<a class="btn btn-info" href="{{route('panelkucharza')}}">Panel kucharzy</a>
-<a class="btn btn-info" href="{{route('paneldostawcy')}}">Panel dostawców</a>
-<a class="btn btn-info" href="{{route('creator-pizzy')}}">Kreator pizzy</a>
+
 @endsection
 
 @section('scripts')

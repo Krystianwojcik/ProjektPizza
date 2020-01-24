@@ -107,6 +107,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
 
+
+           
+           
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('panelkucharza')}}">Panel kucharzy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('paneldostawcy')}}">Panel dostawców</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('creator-pizzy')}}">Kreator pizzy</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('pizzerialist')}}">Wybór pizzerii</a>
             </li>
