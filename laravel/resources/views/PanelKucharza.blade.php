@@ -16,7 +16,7 @@
       <th scope="col">Zmień status</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="tabela_order">
     @foreach($orderss as $order)
       @foreach($order->Order_Pizza as $Order_Pizza)
         <tr>
@@ -52,7 +52,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $(".change-order-status").click(function(e){
+        
+           $('.change-order-status').click(function(e){
             e.preventDefault();
             var order_id = $(this).attr('name');
             var status_id = $(this).attr('value');
@@ -61,11 +62,35 @@
                 url:'/change_status_order',
                 data:{order_id: order_id, status_id: status_id},
                 success:function(data){
-                    alert(data.success);
-                    console.log(data.success);
+                    console.log('status update');
+                    $.ajax({
+                    type:'POST',
+                    url:'/refresh_order',
+                    success:function(data){
+                        $('#tabela_order').html(data.success);
+                        console.log('tabela update');
+                    }
+                });
                 }
             });
-        });
+        });    
+        
+        var time = setInterval(function() {
+            $.ajax({
+                    type:'POST',
+                    url:'/refresh_order',
+             
+                    success:function(data){
+                        $('#tabela_order').html(data.success);
+                        console.log('tabela update');
+                    }
+                });
+      
+ }, 10000);
+       
+          
+        
+
     </script>
     @endsection
 

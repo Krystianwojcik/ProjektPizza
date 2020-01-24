@@ -102,5 +102,35 @@ class HomeController extends Controller
 
 
     }
+    public function refresh_order_function() {
+        $objects = $this->fR->getOrdersForChef();
+        $return = '';
+        foreach($objects as $order) {
+           foreach($order->Order_Pizza as $Order_Pizza) {
+           $return .= '<tr>';
+               $return .= '<td>'.$order->id.'</td>';
+               $return .= '<td>'.$order->status->name.'</td>';
+               $return .= '<td>'.$order->pizzeria->name.'</td>';
+               $return .= '<td>'.$Order_Pizza->pizzeria_pizza_id.'</td>';
+               $return .= '<td>'.$this->fR->getPizzaComponents($Order_Pizza->pizzeria_pizza_id).'</td>';
+               if($order->status->id == '1') {
+                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="2">Realizuj</button></td>';
+                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="3">Na produkcje</button></td>';
+                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="7">Anuluj</button></td>';
+               } elseif($order->status->id == '2') {
+                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="3">Na produkcje</button></td>';
+               } elseif($order->status->id == '3') {
+                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="4">Czeka na dostawcę</button></td>';
+               }                      
+            $return .= '</tr>';
+            }
+        }
+        $return .= '<script>$(".change-order-status").click(function(t){t.preventDefault();var e=$(this).attr("name"),a=$(this).attr("value");$.ajax({type:"POST",url:"/change_status_order",data:{order_id:e,status_id:a},success:function(t){console.log("status update"),$.ajax({type:"POST",url:"/refresh_order",success:function(t){$("#tabela_order").html(t.success),console.log("tabela update")}})}})});</script>';
+
+
+        return response()->json(['success'=>$return]);
+
+
+    }
 }
 

@@ -18,7 +18,7 @@ class Order_PizzaTableSeeder extends Seeder
             DB::table('order_pizza')->insert([
                 'id'=>$i,
                 'order_id'=>$j,
-                'pizzeria_pizza_id'=>$faker->numberBetween(1,2),
+                'pizzeria_pizza_id'=>$faker->numberBetween(1,50),
                 'cutting_id'=>$faker->numberBetween(1,3),
             ]);
             if($i<=10) $j++;
