@@ -49,13 +49,15 @@ class OrderController extends Controller
             'surname' => 'required|string|max:50',
             'street' => 'required|string|max:50',
             'city' => 'required|string|max:50',
-            'zpicode' => 'required|digits:5|integer'
+            'zpicode' => 'required|string|max:6'
         ]);
 
 
         $this->fR->addOrder($request);
-        // dd($request->all());
-        // dd($request->name);
+/*
+        dd($request->all());
+*/
+/*        dd($user->id);*/
         return view('thankyou');
     }
 

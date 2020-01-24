@@ -18,6 +18,7 @@ interface FrontendRepositoryInterface   {
     public function getOrdersForChef();
 
     public function addOrder($request);
+    public function addOrderPizza($order_id, $pizza_id);
 
     public function getAllPizzeriaWithPizza($return_no, $return_yes);
     public function getAllPizzasWithPizzeria($id, $return_no, $return_yes);

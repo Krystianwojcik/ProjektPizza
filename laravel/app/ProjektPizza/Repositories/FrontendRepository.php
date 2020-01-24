@@ -8,6 +8,7 @@ use App\ProjektPizza\Interfaces\FrontendRepositoryInterface;
 use App\User;
 use App\Role;
 use App\Order;
+use App\Order_Pizza;
 use App\Order_Status;
 use App\Components;
 use App\Pizzeria_Pizza_Components;
@@ -148,9 +149,10 @@ class FrontendRepository implements FrontendRepositoryInterface  {
 
     public function addOrder($request)
     {
+        $user = auth()->user();
         $now=new DateTime();
         $order= new Order;
-        $order->user_id=1;
+        $order->user_id=$user->id;
         $order->status_id = 1;
         $order->pizzeria_id=$request->pizzeria_id;
         $order->name=$request->name;
@@ -160,6 +162,19 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         $order->city=$request->city;
         $order->time=$now;
         $order->save();
+        $this->addOrderPizza($order->id, $request->pizzeria_id);
+
+    }
+
+    public function addOrderPizza($order_id, $pizza_id)
+    {
+        
+
+        $Order_Pizza = new Order_Pizza;
+        $Order_Pizza->order_id = $order_id;
+        $Order_Pizza->pizzeria_pizza_id=$pizza_id;
+        $Order_Pizza->cutting_id=1;
+        $Order_Pizza->save();
 
     }
 

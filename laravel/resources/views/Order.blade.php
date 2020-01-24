@@ -85,7 +85,7 @@
     </div>
     <div class="form-group col-md-4">
         <label for="zpicode">Kod pocztowy</label>
-        <input type="text" class="form-control" name="zpicode" id="zpicode" placeholder="Kod pocztowy(12345)" value=""  required >
+        <input type="text" class="form-control" name="zpicode" id="zpicode" placeholder="Kod pocztowy(12-345)" value=""  required >
     </div>
 
     <button type="submit" class="btn btn-primary">Zamów</button>

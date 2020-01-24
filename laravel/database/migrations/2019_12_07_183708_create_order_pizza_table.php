@@ -21,6 +21,7 @@ class CreateOrderPizzaTable extends Migration
             $table->foreign('pizzeria_pizza_id')->references('id')->on('pizzeria_pizza');
             $table->integer('cutting_id')->unsigned();
             $table->foreign('cutting_id')->references('id')->on('cutting');
+            $table->timestamps();
         });
     }
 
