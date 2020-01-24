@@ -34,7 +34,6 @@ class OrderController extends Controller
 
     public function thankyou(Request $request)
     {
-        //dd($request->all());
         /*
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:50',
@@ -48,12 +47,12 @@ class OrderController extends Controller
             'name' => 'required|string|max:50',
             'surname' => 'required|string|max:50',
             'street' => 'required|string|max:50',
+            'numer' => 'required|string|max:10',
             'city' => 'required|string|max:50',
             'zpicode' => 'required|string|max:6'
         ]);
 
 
-    /*    dd($request->all());*/
         $this->fR->addOrder($request);
 /*        dd($user->id);*/
         return view('thankyou');

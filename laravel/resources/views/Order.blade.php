@@ -11,6 +11,9 @@
 @error('street')
 <div class="alert alert-danger">Musisz wpisac swoją ulice</div>
 @enderror
+@error('street')
+<div class="alert alert-danger">Musisz wpisac swój numer domu</div>
+@enderror
 @error('city')
 <div class="alert alert-danger">Musisz wpisac swoje miasto</div>
 @enderror
@@ -78,6 +81,10 @@
     <div class="form-group col-md-4">
         <label for="street">Ulica</label>
         <input type="text" class="form-control" name="street" id="street" placeholder="Ulica" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="numer">Numer</label>
+        <input type="text" class="form-control" name="numer" id="numer" placeholder="numer" required>
     </div>
     <div class="form-group col-md-4">
         <label for="city">Miasto</label>

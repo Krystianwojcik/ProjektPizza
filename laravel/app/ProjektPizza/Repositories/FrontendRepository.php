@@ -149,7 +149,6 @@ class FrontendRepository implements FrontendRepositoryInterface  {
 
     public function addOrder($request)
     {
-
         $user = auth()->user();
         $now=new DateTime();
         $order= new Order;
@@ -160,6 +159,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         $order->zipcode=$request->zpicode;
         $order->surname=$request->surname;
         $order->street=$request->street;
+        $order->numer=$request->numer;
         $order->city=$request->city;
         $order->time=$now;
         $order->save();
