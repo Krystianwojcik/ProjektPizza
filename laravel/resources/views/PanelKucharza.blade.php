@@ -10,17 +10,22 @@
       <th scope="col">#</th>
       <th scope="col">Status</th>
     
-      <th scope="col">Adres</th>
+      <th scope="col">Pizzeria</th>
+      <th scope="col">Pizza</th>
+      <th scope="col">Składniki</th>
       <th scope="col">Zmień status</th>
     </tr>
   </thead>
   <tbody>
     @foreach($orderss as $order)
+      @foreach($order->Order_Pizza as $Order_Pizza)
         <tr>
              <td>{{$order->id}}</td>
                    <td>{{$order->status->name}}</td>
 
                    <td>{{$order->pizzeria->name}}</td>
+                   <td>{{$Order_Pizza->pizzeria_pizza_id}}</td>
+                   <td>@inject('components', 'App\ProjektPizza\Interfaces\FrontendRepositoryInterface'){{ $components->getPizzaComponents($Order_Pizza->pizzeria_pizza_id) }}</td>
                     @if($order->status->id == '1')
                   <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Realizuj</button></td>
                   <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+2}}">Na produkcje</button></td>
@@ -31,6 +36,7 @@
                   <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Czeka na dostawcę</button></td>
                   @endif
         </tr>
+        @endforeach
     @endforeach
 
 

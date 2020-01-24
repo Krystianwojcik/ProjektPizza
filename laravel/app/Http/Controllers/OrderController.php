@@ -53,10 +53,8 @@ class OrderController extends Controller
         ]);
 
 
+    /*    dd($request->all());*/
         $this->fR->addOrder($request);
-/*
-        dd($request->all());
-*/
 /*        dd($user->id);*/
         return view('thankyou');
     }

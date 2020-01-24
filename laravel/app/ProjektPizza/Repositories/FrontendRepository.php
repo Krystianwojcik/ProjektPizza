@@ -149,6 +149,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
 
     public function addOrder($request)
     {
+
         $user = auth()->user();
         $now=new DateTime();
         $order= new Order;
@@ -162,7 +163,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         $order->city=$request->city;
         $order->time=$now;
         $order->save();
-        $this->addOrderPizza($order->id, $request->pizzeria_id);
+        $this->addOrderPizza($order->id, $request->pizza_id);
 
     }
 

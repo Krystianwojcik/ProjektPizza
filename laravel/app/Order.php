@@ -21,5 +21,13 @@ class Order extends Model
     {
         return $this->belongsTo('App\Order_Status');
     }
+    public function Order_Pizza() {
+        return $this->hasMany('App\Order_Pizza');
+    }
+    public function Pizzeria_Pizza_Components()
+    {
+        return $this->hasManyThrough('App\Pizzeria_Pizza_Components', 'App\Pizzeria_Pizza');
+    }
 
+    
 }
