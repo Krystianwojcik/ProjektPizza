@@ -33,6 +33,7 @@ class OrderTableSeeder extends Seeder
                 'surname'=>$faker->lastName,
                 'city'=>$city,
                 'street'=>$faker->streetName,
+                'numer'=>$faker->numberBetween(1,20),
                 'zipcode'=>$zip_code,
 
             ]);

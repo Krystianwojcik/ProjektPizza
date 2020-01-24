@@ -9,25 +9,22 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Status</th>
-      <th scope="col">Imię</th>
-      <th scope="col">Nazwisko</th>
+      <th scope="col">Odbiorca</th>
       <th scope="col">Miasto</th>
       <th scope="col">Odbiór</th>
-      <th scope="col">Adres</th>
+      <th scope="col">Adres dostawy</th>
       <th scope="col">Zmień status</th>
     </tr>
   </thead>
   <tbody>
     @foreach($orderss as $order)
-           
     <tr>
       <th scope="row">{{$order->id}}</th>
       <td>{{$order->status->name}}</td>
-      <td>{{$order->user->name}}</td>
-      <td>{{$order->user->surname}}</td>
-      <td>{{$order->city}}</td>
-      <td>{{$order->pizzeria->name}}</td>
-      <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}</td>
+      <td>{{$order->user->surname}} {{$order->user->name}}</td>
+      <td>{{$order->city}} {{$order->pizzeria->name}}</td>
+      <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}, {{$order->pizzeria->zipcode}} {{$order->pizzeria->city}}</td>
+      <td>{{$order->street}} {{$order->numer}}, {{$order->zipcode}} {{$order->city}}</td>
 @if($order->status->id == '4')
                     <td><button class="btn btn-sm btn-warning text-white change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">W drodze</button></td>
                 @else

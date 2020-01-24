@@ -25,6 +25,7 @@ class CreateOrderTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('street');
+            $table->Integer('numer');
             $table->string('city');
             $table->string('zipcode');
             $table->timestamps();
