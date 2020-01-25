@@ -21,6 +21,30 @@
         <p class="text-center red bolded">{{session('nopizzeria')}}</p>
     @endif
 
+    @auth
+        @if($orderedPizza)
+            <table class="table">
+        <tr>
+            <td>Twoja ostatnio zamówiona pizza</td>
+            <td> Pizzeria </td>
+            <td> Nazwa pizzy </td>
+            <td> Składniki</td>
+        </tr>
+                <tr>
+                    <td></td>
+                    <td> {{$orderedPizzeria->name}}</td>
+                    <td> {{$orderedPizza->name}}</td>
+                    <td> {{$orderedPizzaComponents}}</td>
+                </tr>
+            </table>
+
+
+
+
+
+        @endif
+        @endauth
+
 <table class="table">
     @foreach($objects as $object)
     <tr>

@@ -28,7 +28,17 @@ class HomeController extends Controller
     public function index()
     {
         $objects = $this->fR->getObjectsForMainPage();
-        return view('PizzeriaList',['objects'=>$objects]);
+
+        $orderedPizza = $this->fR->getOrderedPizza();
+        if($orderedPizza == null ) return view('PizzeriaList',['objects'=>$objects]);
+        $orderedPizzaComponents = $this->fR->getPizzaComponents($orderedPizza->id);
+        $orderedPizzeria = $this->fR->getPizzeriaByID(($orderedPizza->pizzeria_id));
+
+        //if($lastOrder)
+        //dd($orderedPizza->id);
+        //dd($return);
+        return view('PizzeriaList',['objects'=>$objects, 'orderedPizza'=>$orderedPizza, 'orderedPizzaComponents'=>$orderedPizzaComponents, 'orderedPizzeria'=> $orderedPizzeria]);
+       // else return view('PizzeriaList',['objects'=>$objects]);
     }
     public function listOfUsers()
     {
@@ -121,7 +131,7 @@ class HomeController extends Controller
                    $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="3">Na produkcje</button></td>';
                } elseif($order->status->id == '3') {
                    $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="4">Czeka na dostawcę</button></td>';
-               }                      
+               }
             $return .= '</tr>';
             }
         }
