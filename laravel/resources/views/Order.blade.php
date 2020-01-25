@@ -61,14 +61,16 @@
 
 <form method="POST" action="{{ route('thankyou') }}">
     {{ csrf_field() }}
-    <div class="form-group col-md-4">
-        <label for="pizzeria_id">Pizzeria_id</label>
-        <input type="text" name="pizzeria_id" class="form-control" id="pizzeria_id" aria-describedby="pizzeria_id" placeholder="pizzeria_id" value="{{$id_pizzeria}}" required readonly>
-        <small id="podpowiedzEmail" class="form-text text-muted">W powyższym polu jest numer pizzy</small>
+    <div class="row">
+        <div class="form-group col-md-12">
+        <h2>Pizzeria: {{$id_pizzeria}}</h2>
+        <input type="hidden" name="pizzeria_id" class="form-control" id="pizzeria_id" aria-describedby="pizzeria_id" placeholder="pizzeria_id" value="{{$id_pizzeria}}" required readonly>
     </div>
-    <div class="form-group col-md-4">
-        <label for="pizza_id">pizza_id</label>
-        <input type="text" name="pizza_id" class="form-control" id="pizza_id" placeholder="pizza_id" value="{{$id_pizza}}" required readonly>
+    <div class="form-group col-md-12">
+       @inject('pizza_name', 'App\ProjektPizza\Interfaces\FrontendRepositoryInterface')
+       
+        <h3>Pizza: {{ $pizza_name->get_pizza_name_by_id($id_pizza) }}</h3>
+        <input type="hidden" name="pizza_id" class="form-control" id="pizza_id" placeholder="pizza_id" value="{{$id_pizza}}" required readonly>
     </div>
     <div class="form-group col-md-4">
         <label for="name" id="name">Imię</label>
@@ -93,6 +95,7 @@
     <div class="form-group col-md-4">
         <label for="zpicode">Kod pocztowy</label>
         <input type="text" class="form-control" name="zpicode" id="zpicode" placeholder="Kod pocztowy(12-345)" value=""  required >
+    </div>
     </div>
 
     <button type="submit" class="btn btn-primary">Zamów</button>

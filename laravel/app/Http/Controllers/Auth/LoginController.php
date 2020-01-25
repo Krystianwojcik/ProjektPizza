@@ -31,13 +31,13 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (auth()->user()->role_id == 1) {
-            return '/pizzeriaList';
+            return '/homepage';
         } else if (auth()->user()->role_id == 2) {
             return '/panel_Kucharza';
         }  else if (auth()->user()->role_id == 3) {
             return '/panel_Dostawcy';
         } else {
-            return '/home';
+            return '/homepage';
         }
     }
 

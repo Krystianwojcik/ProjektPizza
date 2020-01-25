@@ -93,7 +93,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         foreach($All_pizzas as $pizza) {
             $pizze = $this->getPizzaComponents($pizza->id, $return_no, $return_yes);
             if($pizze) {
-                $zamow = "<a href='/order/".$pizza->pizzeria_id."/".$pizza->id."'>Zamów</a>";
+                $zamow = "<a class='btn btn-sm btn-primary' href='/order/".$pizza->pizzeria_id."/".$pizza->id."'>Zamów</a>";
                 $return .= '<tr><td>'.$pizza->name.'</td><td>'.$zamow.'</td><td>'.$pizze.'</td></tr>';
             }
 
@@ -178,7 +178,10 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         $Order_Pizza->save();
 
     }
-
+public function get_pizza_name_by_id($id) {
+    $return = Pizzeria_Pizza::find($id)->name;
+    return $return;
+}
 
 }
 
