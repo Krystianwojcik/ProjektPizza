@@ -72,5 +72,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Order', 'user_id');
     }
+    public function get_role()
+    {
+        return $this->hasOne('App\Role', 'id');
+    }
 
 }

@@ -109,20 +109,29 @@
 
 
            
-           
+           @auth
+             
+            @if (auth()->user()->role_id == 2)
             <li class="nav-item">
                 <a class="nav-link" href="{{route('panelkucharza')}}">Panel kucharzy</a>
             </li>
+            @elseif (auth()->user()->role_id == 3)
             <li class="nav-item">
                 <a class="nav-link" href="{{route('paneldostawcy')}}">Panel dostawców</a>
             </li>
+            @elseif (auth()->user()->role_id == 4)
             <li class="nav-item">
-                <a class="nav-link" href="{{route('creator-pizzy')}}">Kreator pizzy</a>
+                ADMIN
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('pizzerialist')}}">Wybór pizzerii</a>
-            </li>
-            @auth
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('creator-pizzy')}}">Kreator pizzy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('pizzerialist')}}">Wybór pizzerii</a>
+                </li>
+            @endif
+           
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Konto użytkownika
@@ -150,6 +159,12 @@
             </li>
 
             @guest
+            <li class="nav-item">
+                    <a class="nav-link" href="{{route('creator-pizzy')}}">Kreator pizzy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('pizzerialist')}}">Wybór pizzerii</a>
+                </li>
             <li class="nav-item nav-right">
                 <a class="nav-link" href="{{ route('login') }}">Zaloguj</a>
             </li>

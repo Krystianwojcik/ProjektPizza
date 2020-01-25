@@ -22,29 +22,37 @@
     @endif
 
     @auth
-        @if($orderedPizza)
+        
+        <!--@if($orderedPizza)-->
+           <h3>Twoja ostatnio zamówiona pizza</h3>
             <table class="table">
         <tr>
-            <td>Twoja ostatnio zamówiona pizza</td>
             <td> Pizzeria </td>
             <td> Nazwa pizzy </td>
             <td> Składniki</td>
         </tr>
+               @foreach($orderedPizza as $orderPizza)
+
                 <tr>
-                    <td></td>
-                    <td> {{$orderedPizzeria->name}}</td>
-                    <td> {{$orderedPizza->name}}</td>
-                    <td> {{$orderedPizzaComponents}}</td>
+                    <td>
+                    @inject('pizzeria_name', 'App\ProjektPizza\Interfaces\FrontendRepositoryInterface'){{$pizzeria_name->getPizzeriaByID($orderPizza->pizzeria_id)->name}}
+                    </td>
+                    <td>{{$orderPizza->name}}</td>
+                    <td>
+                       @inject('components', 'App\ProjektPizza\Interfaces\FrontendRepositoryInterface'){{ $components->getPizzaComponents($orderPizza->id) }}
+                    </td>
+           
                 </tr>
+                @endforeach
             </table>
 
 
 
 
-
-        @endif
+<!--
+        @endif-->
         @endauth
-
+<h2>Lista pizzerii</h2>
 <table class="table">
     @foreach($objects as $object)
     <tr>

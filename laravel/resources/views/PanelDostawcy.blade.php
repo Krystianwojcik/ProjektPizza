@@ -22,7 +22,7 @@
       <th scope="row">{{$order->id}}</th>
       <td>{{$order->status->name}}</td>
       <td>{{$order->user->surname}} {{$order->user->name}}</td>
-      <td>{{$order->city}} {{$order->pizzeria->name}}</td>
+      <td>{{$order->pizzeria->name}}</td>
       <td>{{$order->pizzeria->street}} {{$order->pizzeria->number}}, {{$order->pizzeria->zipcode}} {{$order->pizzeria->city}}</td>
       <td>{{$order->street}} {{$order->numer}}, {{$order->zipcode}} {{$order->city}}</td>
 @if($order->status->id == '4')
@@ -53,7 +53,7 @@
            url:'/change_status_order',
            data:{order_id: order_id, status_id: status_id},
            success:function(data){
-                alert(data.success);
+               /* alert(data.success);*/
                 console.log(data.success);
            }
         });

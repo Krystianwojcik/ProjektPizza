@@ -26,6 +26,8 @@ interface FrontendRepositoryInterface   {
     public function getAllPizzasWithPizzeria($id, $return_no, $return_yes);
     public function getPizzaComponents($id, $return_no, $return_yes);
     public function getPizzaComponents_Component($id);
+    
+    public function get_pizza_name_by_id($id);
 
 }
 

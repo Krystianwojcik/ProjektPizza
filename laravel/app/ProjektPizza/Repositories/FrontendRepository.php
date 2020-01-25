@@ -11,6 +11,7 @@ use App\Order;
 use App\Order_Pizza;
 use App\Order_Status;
 use App\Components;
+use App\Pizzeria_User;
 use App\Pizzeria_Pizza_Components;
 use http\Env\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,10 +26,10 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     {
         $user=Auth::user();
         if($user == null) return null;
-        $orders=Order::where('user_id', $user->id)->get();
+        $orders=Order::where('user_id', $user->id)->orderBy('created_at', 'desc')->limit(5)->get();
    
        // $pizzaOrder= Order_Pizza::all();
-
+$return = array();
         foreach($orders as $order)
         {
             
@@ -37,10 +38,10 @@ class FrontendRepository implements FrontendRepositoryInterface  {
                // dd($pizzaOrder->id);46
                $pizza = Pizzeria_Pizza::where('id', '=', $pizzaOrder->pizzeria_pizza_id)->first();
                // dd($pizza->name); Pizza 1
-                $pizzas=$pizza;
+                $return[] = $pizza;
         }
-        if($pizzas) return $pizzas;
-        return null;
+
+        return $return;
 
     }
     public function getPizzeriaByID($id)
@@ -70,17 +71,15 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     }
     public function getOrdersForChef()
     {
-        return Order::where('status_id', '<=', '4')->orderBy('status_id')->get();
+        $pizzeria_id = Pizzeria_User::where('user_id', auth()->user()->id)->first();
+        return Order::where([['status_id', '<=', '4'], ['pizzeria_id', $pizzeria_id->pizzeria_id]])->orderBy('status_id')->get();
     }
     public function getOrdersForSupplier()
     {
+        $pizzeria_id = Pizzeria_User::where('user_id', auth()->user()->id)->first();
+        
+        return Order::where([['status_id', '>=', '4'], ['status_id', '<', '6'], ['pizzeria_id', $pizzeria_id->pizzeria_id]])->orderBy('status_id')->get();
 
-       $q= Order::all();
-        $q = ['status_id' => '4'];
-          return Order::where($q)
-              ->orWhere('status_id', '=', '5')
-              ->orderBy('status_id')
-              ->get();
     }
     public function getOrder($id)
     {
@@ -120,7 +119,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         foreach($All_pizzas as $pizza) {
             $pizze = $this->getPizzaComponents($pizza->id, $return_no, $return_yes);
             if($pizze) {
-                $zamow = "<a href='/order/".$pizza->pizzeria_id."/".$pizza->id."'>Zamów</a>";
+                $zamow = "<a class='btn btn-sm btn-primary' href='/order/".$pizza->pizzeria_id."/".$pizza->id."'>Zamów</a>";
                 $return .= '<tr><td>'.$pizza->name.'</td><td>'.$zamow.'</td><td>'.$pizze.'</td></tr>';
             }
 
@@ -205,7 +204,10 @@ class FrontendRepository implements FrontendRepositoryInterface  {
         $Order_Pizza->save();
 
     }
-
+public function get_pizza_name_by_id($id) {
+    $return = Pizzeria_Pizza::find($id)->name;
+    return $return;
+}
 
 }
 
