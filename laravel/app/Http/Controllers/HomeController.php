@@ -115,12 +115,12 @@ class HomeController extends Controller
                $return .= '<td>'.$this->fR->getPizzaComponents($Order_Pizza->pizzeria_pizza_id).'</td>';
                if($order->status->id == '1') {
                    $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="2">Realizuj</button></td>';
-                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="3">Na produkcje</button></td>';
-                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="7">Anuluj</button></td>';
+                   $return .= '<td><button class="btn btn-warning btn-sm change-order-status" name="'.$order->id.'" value="3">Na produkcje</button></td>';
+                   $return .= '<td><button class="btn btn-danger btn-sm change-order-status" name="'.$order->id.'" value="7">Anuluj</button></td>';
                } elseif($order->status->id == '2') {
-                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="3">Na produkcje</button></td>';
+                   $return .= '<td><button class="btn btn-warning btn-sm change-order-status" name="'.$order->id.'" value="3">Na produkcje</button></td>';
                } elseif($order->status->id == '3') {
-                   $return .= '<td><button class="btn btn-primary btn-sm change-order-status" name="'.$order->id.'" value="4">Czeka na dostawcę</button></td>';
+                   $return .= '<td><button class="btn btn-info btn-sm change-order-status" name="'.$order->id.'" value="4">Czeka na dostawcę</button></td>';
                }                      
             $return .= '</tr>';
             }

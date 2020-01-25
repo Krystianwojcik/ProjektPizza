@@ -28,12 +28,12 @@
                    <td>@inject('components', 'App\ProjektPizza\Interfaces\FrontendRepositoryInterface'){{ $components->getPizzaComponents($Order_Pizza->pizzeria_pizza_id) }}</td>
                     @if($order->status->id == '1')
                   <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Realizuj</button></td>
-                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+2}}">Na produkcje</button></td>
-                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="7">Anuluj</button></td>
+                  <td><button class="btn btn-warning btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+2}}">Na produkcje</button></td>
+                  <td><button class="btn btn-danger btn-sm change-order-status" name="{{$order->id}}" value="7">Anuluj</button></td>
                  @elseif($order->status->id == '2')
-                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Na produkcje</button></td>
+                  <td><button class="btn btn-warning btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Na produkcje</button></td>
                   @elseif($order->status->id == '3')
-                  <td><button class="btn btn-primary btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Czeka na dostawcę</button></td>
+                  <td><button class="btn btn-info btn-sm change-order-status" name="{{$order->id}}" value="{{$order->status->id+1}}">Czeka na dostawcę</button></td>
                   @endif
         </tr>
         @endforeach
