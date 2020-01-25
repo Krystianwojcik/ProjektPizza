@@ -5,6 +5,8 @@ namespace App\ProjektPizza\Interfaces;
 interface FrontendRepositoryInterface   {
 
     public function getObjectsForMainPage();
+    public function getOrderedPizza();
+    public function getPizzeriaByID($id);
 
     public function getPizzeria($id);
     public function getAllComponents();

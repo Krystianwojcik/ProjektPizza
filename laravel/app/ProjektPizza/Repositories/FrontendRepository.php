@@ -13,12 +13,40 @@ use App\Order_Status;
 use App\Components;
 use App\Pizzeria_Pizza_Components;
 use http\Env\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendRepository implements FrontendRepositoryInterface  {
 
     public function getObjectsForMainPage()
     {
         return Pizzeria::all();
+    }
+    public function getOrderedPizza()
+    {
+        $user=Auth::user();
+        if($user == null) return null;
+        $orders=Order::all();
+       // $pizzaOrder= Order_Pizza::all();
+        $pizzas;
+        foreach($orders as $order)
+        {
+            if($order->user_id == $user->id)
+            {
+                //dd($order->id); 31
+                $pizzaOrder= Order_Pizza::where('order_id', '=', $order->id)->first();
+               // dd($pizzaOrder->id);46
+               $pizza = Pizzeria_Pizza::where('id', '=', $pizzaOrder->pizzeria_pizza_id)->first();
+               // dd($pizza->name); Pizza 1
+                $pizzas=$pizza;
+            }
+        }
+        if($pizzas) return $pizzas;
+        return null;
+
+    }
+    public function getPizzeriaByID($id)
+    {
+        return Pizzeria::where('id', '=', $id)->first();
     }
     public function getAllComponents()
     {
@@ -169,7 +197,7 @@ class FrontendRepository implements FrontendRepositoryInterface  {
 
     public function addOrderPizza($order_id, $pizza_id)
     {
-        
+
 
         $Order_Pizza = new Order_Pizza;
         $Order_Pizza->order_id = $order_id;
