@@ -25,20 +25,19 @@ class FrontendRepository implements FrontendRepositoryInterface  {
     {
         $user=Auth::user();
         if($user == null) return null;
-        $orders=Order::all();
+        $orders=Order::where('user_id', $user->id)->get();
+   
        // $pizzaOrder= Order_Pizza::all();
-        $pizzas;
+
         foreach($orders as $order)
         {
-            if($order->user_id == $user->id)
-            {
+            
                 //dd($order->id); 31
                 $pizzaOrder= Order_Pizza::where('order_id', '=', $order->id)->first();
                // dd($pizzaOrder->id);46
                $pizza = Pizzeria_Pizza::where('id', '=', $pizzaOrder->pizzeria_pizza_id)->first();
                // dd($pizza->name); Pizza 1
                 $pizzas=$pizza;
-            }
         }
         if($pizzas) return $pizzas;
         return null;
